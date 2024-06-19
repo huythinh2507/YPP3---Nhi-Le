@@ -1,4 +1,4 @@
-# YPP3 - Nhi Le (## This is my Update Ouput for YPP3)
+# YPP3 - Nhi Le 
 
 ## Table of content
 
