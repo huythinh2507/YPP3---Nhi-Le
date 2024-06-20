@@ -131,9 +131,47 @@ FROM customer_orders_temp AS c
 JOIN runner_orders_temp AS r
 ON c.order_id = r.order_id
 
---3. 
+--3.  Is there any relationship between the number of pizzas and how long the order takes to prepare?
+WITH time_prepare_cte AS (
+SELECT 
+	c.order_id, 
+	COUNT(c.order_id) AS count_pizza ,
+	DATE_PART('minute', r.pickup_time - c.order_time) AS datediff
+FROM customer_orders_temp AS c
+JOIN runner_orders_temp AS r
+ON c.order_id = r.order_id
+WHERE r.distance != 0
+GROUP BY c.order_id, datediff
+ORDER BY c.order_id
+)
 
-```
+SELECT 
+	count_pizza, 
+	AVG(datediff) AS Avg_time_prepare
+FROM time_prepare_cte
+GROUP BY count_pizza
+ORDER BY count_pizza
 
+--4. What was the average distance travelled for each customer?
+SELECT 
+	c.customer_id, 
+	ROUND(AVG(r.duration),2) AS Avg_travel_diration
+FROM runner_orders_temp AS r
+JOIN customer_orders_temp AS c
+	ON c.order_id = r.order_id
+WHERE duration IS NOT NULL
+GROUP BY c.customer_id
+ORDER BY c.customer_id
+--5. What was the difference between the longest and shortest delivery times for all orders?
+SELECT 
+	MAX(duration) AS max_duration, 
+	MIN(duration) AS min_duration,
+	MAX(duration) - MIN(duration) AS different_duration
+FROM runner_orders_temp
+--6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+--7. What is the successful delivery percentage for each runner?
+
+C. 
+--1.
 
 
