@@ -1,3 +1,4 @@
+```sql
 -- Clean data and transform
 -- Table 1: pizza_runner.customer_orders
 CREATE TEMP TABLE customer_orders_temp AS 
@@ -132,7 +133,7 @@ ON c.order_id = r.order_id
 
 --3. 
 
-
+```
 
 
 
