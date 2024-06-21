@@ -14,7 +14,7 @@ GROUP BY DATE_PART('month', start_date)
 ORDER BY month_start
 ```
 
-##3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name.
+## 3. What plan start_date values occur after the year 2020 for our dataset? Show the breakdown by count of events for each plan_name.
 ```sql
 SELECT p.plan_id, p.plan_name, COUNT(s.customer_id) count_customer
 FROM foodie_fi.subscriptions AS s
@@ -24,7 +24,7 @@ WHERE DATE_PART('year', start_date) > 2020
 GROUP BY p.plan_id, p.plan_name
 ORDER BY p.plan_id
 ```
-##4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
+## 4. What is the customer count and percentage of customers who have churned rounded to 1 decimal place?
 ```sql
 WITH count_customer_cte AS (
 SELECT 
@@ -41,7 +41,7 @@ SELECT
 	ROUND((churned_customer/count_customer::decimal) *100,1) AS percentage_churned_customer 
 FROM count_customer_cte
 ```
-##5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
+## 5. How many customers have churned straight after their initial free trial - what percentage is this rounded to the nearest whole number?
 ```sql
 WITH ranked_cte AS (
 SELECT 
@@ -61,7 +61,7 @@ SELECT
 FROM ranked_cte
 WHERE order_plan = 2 AND plan_id = 4 
 ```
-##6. What is the number and percentage of customer plans after their initial free trial?
+## 6. What is the number and percentage of customer plans after their initial free trial?
 ```sql
 WITH ranked_cte AS (
 SELECT 
@@ -84,7 +84,7 @@ GROUP BY next_plan_id
 ORDER BY next_plan_id
 ```
 
-##7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
+## 7. What is the customer count and percentage breakdown of all 5 plan_name values at 2020-12-31?
 ```sql
 WITH ranked_cte AS (
 SELECT 
@@ -109,7 +109,7 @@ GROUP BY plan_id,  plan_name
 ORDER BY plan_id
 ```
 
-##8. How many customers have upgraded to an annual plan in 2020?
+## 8. How many customers have upgraded to an annual plan in 2020?
 ```sql
 WITH ranked_cte AS (
 SELECT 
@@ -132,7 +132,7 @@ GROUP BY next_plan_id
 ORDER BY next_plan_id
 ```
 
-9. How many days on average does it take for a customer to upgrade to an annual plan from the day they join Foodie-Fi?
+## 9. How many days on average does it take for a customer to upgrade to an annual plan from the day they join Foodie-Fi?
 ```sql
 WITH trial_plan_cte AS (
     SELECT
@@ -157,9 +157,11 @@ JOIN upgraded_anual_cte AS annual
   ON trial.customer_id = annual.customer_id
 ```
 
-##10. 
+## 10. Can you further breakdown this average value into 30 day periods (i.e. 0-30 days, 31-60 days etc)
+```sql
+```
 
-##11. 
+## 11. How many customers downgraded from a pro monthly to a basic monthly plan in 2020?
 ```sql
 WITH ranked_cte AS (
 SELECT 
