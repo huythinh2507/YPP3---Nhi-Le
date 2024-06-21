@@ -205,10 +205,10 @@ SELECT
 FROM runner_orders_temp
 ```
 
---6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+## 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 ```sql
 ```
---7. What is the successful delivery percentage for each runner?
+## 7. What is the successful delivery percentage for each runner?
 ```sql
 ```
 
