@@ -1,0 +1,24 @@
+FUNCTIONS IN CHALLENGES
+
+- CTE (CTE and TEMP TABLE kind of similar BUT CTE exists only on a single query, TEMP TABLE exists on a session of query
+- CREATE TEMP TABLE name_table AS.../ CREATE TEMP TABLE customer_orders_temp AS (....)
+- TRIM (' string'): remove space before and after string --> string
+- TRIM ('s' FROM 'string'): remove s from string --> tring
+- DATE_PART('week', table_name) =  WEEK()
+- EXTRACT(year from timestamp)
+- DATE_TRUNC('week', table_name) = take a specific date
+- INTERVAL +/-1 day: khoang cach thoi gian +/-1 ngay, 
+- DATEDIFF (interval, timestamp1, timestamp2)
+- AVG
+- ROW_NUMBER() OVER (PARTITION BY .... ORDER BY)
+- LEAD (field, offset) OVER (PARTITION BY .... ORDER BY) AS next_field: gia tri lon nhat tiep theo tinh tu hang 
+thu offset 
+- || '%' = CONCAT(...,'%'): To add '%' sign
+
+- percentile: 
++ percentile_disc([percentileth]) within group (order by...) (partition by...): return an exactly value which exists on dataset
++ percentile_cont()([percentileth]) within group (order by...) (partition by...): like percentile_disc(), but return a value which does not exists on dataset
+
+- sum over() # sum 
+- GENERATE_SERIES(start, end, step)
+
