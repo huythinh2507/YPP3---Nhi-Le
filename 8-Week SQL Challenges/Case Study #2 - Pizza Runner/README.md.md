@@ -1,6 +1,6 @@
 ## 🍕 Case Study #2 Pizza Runner
-- [Case Study #1 - Danny's Diner](https://8weeksqlchallenge.com/case-study-2/)
-- [Reference Answer](https://8weeksqlchallenge.com/case-study-2/)
+- [Case Study #2 Pizza Runner](https://8weeksqlchallenge.com/case-study-2/)
+- [Reference Answer](https://github.com/katiehuangx/8-Week-SQL-Challenge/tree/main/Case%20Study%20%232%20-%20Pizza%20Runner#-case-study-2-pizza-runner)
 
 ***
 
