@@ -1,3 +1,10 @@
+## 🍕 Case Study #2 Pizza Runner
+- [Case Study #1 - Danny's Diner](https://8weeksqlchallenge.com/case-study-2/)
+- [Reference Answer](https://8weeksqlchallenge.com/case-study-2/)
+
+***
+
+## 📚 My Solution
 ## 0. Clean data and transform
 ```sql
 -- Table 1: pizza_runner.customer_orders
