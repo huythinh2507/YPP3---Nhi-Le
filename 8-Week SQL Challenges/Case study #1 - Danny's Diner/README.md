@@ -17,7 +17,7 @@ GROUP BY sales.customer_id
 ORDER BY sales.customer_id
 ```
 
-## 2. How many days has each customer visited the restaurant?
+### 2. How many days has each customer visited the restaurant?
 ```sql
 SELECT 
   customer_id, 
@@ -27,7 +27,7 @@ GROUP BY customer_id
 ORDER BY customer_id
 ```
 
-## 3. What was the first item from the menu purchased by each customer?
+### 3. What was the first item from the menu purchased by each customer?
 ```sql
 WITH sales_order_cte AS (
 SELECT 
@@ -48,7 +48,7 @@ GROUP BY customer_id, product_name
 ORDER BY customer_id
 ```
 
-## 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+### 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 ```sql
 SELECT 
   menu.product_name, 
@@ -61,7 +61,7 @@ ORDER BY total_times DESC
 LIMIT 1
 ```
 
-## 5. Which item was the most popular for each customer?
+### 5. Which item was the most popular for each customer?
 ```sql
 WITH count_order_cte AS (
 SELECT 
@@ -81,7 +81,7 @@ FROM count_order_cte
 WHERE rank = 1
 ```
 
-## 6. Which item was purchased first by the customer after they became a member?
+### 6. Which item was purchased first by the customer after they became a member?
 ```sql
 --Xài DENSE_RANK()
 WITH order_after_member_cte AS(
@@ -129,7 +129,7 @@ WHERE rank = 1
 ORDER BY order_after_member_cte.customer_id
 ``` 
 
-## 7. Which item was purchased just before the customer became a member?
+### 7. Which item was purchased just before the customer became a member?
 ```sql
 -- Tác giả làm sai, dùng NUM_ROW() để rank đã bỏ qua orders cùng ngày order
 WITH order_before_member_cte AS (
@@ -149,7 +149,7 @@ FROM order_before_member_cte
 WHERE rank = 1
 ```
 
-## 8. What is the total items and amount spent for each member before they became a member?
+### 8. What is the total items and amount spent for each member before they became a member?
 ```sql
 SELECT 
   sales.customer_id, 
@@ -166,7 +166,7 @@ GROUP BY sales.customer_id
 ORDER BY sales.customer_id
 ```
 
-## 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+### 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 ```sql
 --Nếu point này tính cho tất cả khách hàng
 WITH point_product_cte AS (
@@ -211,7 +211,7 @@ GROUP BY sales.customer_id
 ORDER BY sales.customer_id
 ```
 
-## 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+### 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 ```sql
 WITH point_product_cte AS (
 SELECT 
