@@ -5,7 +5,10 @@
 ***
 
 ## 📚 My Solution
-## 0. Clean data and transform
+
+***
+
+### 0. Clean data and transform
 ```sql
 -- Table 1: pizza_runner.customer_orders
 CREATE TEMP TABLE customer_orders_temp AS 
@@ -58,20 +61,22 @@ CREATE TEMP TABLE runner_orders_temp AS
 FROM pizza_runner.runner_orders
 ```
 
-# A. Pizza Metrics
-## 1. How many pizzas were ordered?
+***
+
+## A. Pizza Metrics
+### 1. How many pizzas were ordered?
 ```sql
 SELECT COUNT(order_id) AS count_pizza_order
 FROM customer_orders_temp
 ```
 
-## 2. How many unique customer orders were made?
+### 2. How many unique customer orders were made?
 ```sql
 SELECT COUNT(distinct order_id) AS count_unique_order
 FROM customer_orders_temp
 ```
 
-## 3. How many successful orders were delivered by each runner?
+### 3. How many successful orders were delivered by each runner?
 ```sql
 SELECT runner_id, COUNT(order_id) AS count_successful_order
 FROM runner_orders_temp 
@@ -80,7 +85,7 @@ GROUP BY runner_id
 ORDER BY runner_id
 ```
 
-## 4. How many of each type of pizza was delivered?
+### 4. How many of each type of pizza was delivered?
 ```sql
 SELECT pn.pizza_name, COUNT(c.pizza_id) AS count_pizza_delivered
 FROM runner_orders_temp AS r
@@ -92,7 +97,7 @@ WHERE distance !=0
 GROUP BY pn.pizza_name
 ```
 
-## 5. How many Vegetarian and Meatlovers were ordered by each customer?**
+### 5. How many Vegetarian and Meatlovers were ordered by each customer?**
 ```sql
 SELECT c.customer_id, pn.pizza_name, COUNT(c.order_id) AS count_order
 FROM pizza_runner.pizza_names AS pn
@@ -102,7 +107,7 @@ GROUP BY c.customer_id, pn.pizza_name
 ORDER BY c.customer_id
 ```
 
-## 6. What was the maximum number of pizzas delivered in a single order?
+### 6. What was the maximum number of pizzas delivered in a single order?
 ```sql
 WITH pizza_per_order_cte AS (
 SELECT order_id, COUNT(pizza_id) AS count_pizza
@@ -114,13 +119,13 @@ SELECT MAX(count_pizza) as max_pizza
 FROM pizza_per_order_cte
 ```
 
-## 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
+### 7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
 ```sql
 ```
-## 8. How many pizzas were delivered that had both exclusions and extras?
+### 8. How many pizzas were delivered that had both exclusions and extras?
 ```sql
 ```
-## 9. What was the total volume of pizzas ordered for each hour of the day?
+### 9. What was the total volume of pizzas ordered for each hour of the day?
 ```sql
 ---Method 1:
 SELECT 
@@ -141,7 +146,7 @@ GROUP BY EXTRACT(HOUR FROM order_time)
 ORDER BY EXTRACT(HOUR FROM order_time) 
 ```
 
-## 10. What was the volume of orders for each day of the week?
+### 10. What was the volume of orders for each day of the week?
 ```sql
 SELECT EXTRACT(DOW FROM order_time) AS day_of_week, COUNT(order_id) AS count_pizza
 FROM customer_orders_temp
@@ -149,8 +154,8 @@ GROUP BY day_of_week
 ORDER BY day_of_week 
 ```
 
-# B. Runner and Customer Experience
-## 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
+## B. Runner and Customer Experience
+### 1. How many runners signed up for each 1 week period? (i.e. week starts 2021-01-01)
 ```sql
 SELECT 
    DATE_PART('week', registration_date) AS registration_week, 
@@ -159,7 +164,7 @@ FROM pizza_runner.runners
 GROUP BY registration_week
 ```
 
-## 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
+### 2. What was the average time in minutes it took for each runner to arrive at the Pizza Runner HQ to pickup the order?
 ```sql
 SELECT AVG(DATE_PART('minute', r.pickup_time - c.order_time)) AS avg_pickup_time
 FROM customer_orders_temp AS c
@@ -167,7 +172,7 @@ JOIN runner_orders_temp AS r
 ON c.order_id = r.order_id
 ```
 
-## 3.  Is there any relationship between the number of pizzas and how long the order takes to prepare?
+### 3.  Is there any relationship between the number of pizzas and how long the order takes to prepare?
 ```sql
 WITH time_prepare_cte AS (
 SELECT 
@@ -190,7 +195,7 @@ GROUP BY count_pizza
 ORDER BY count_pizza
 ```
 
-## 4. What was the average distance travelled for each customer?
+### 4. What was the average distance travelled for each customer?
 ```sql
 SELECT 
 	c.customer_id, 
@@ -203,7 +208,7 @@ GROUP BY c.customer_id
 ORDER BY c.customer_id
 ```
 
-## 5. What was the difference between the longest and shortest delivery times for all orders?
+### 5. What was the difference between the longest and shortest delivery times for all orders?
 ```sql
 SELECT 
 	MAX(duration) AS max_duration, 
@@ -212,10 +217,10 @@ SELECT
 FROM runner_orders_temp
 ```
 
-## 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
+### 6. What was the average speed for each runner for each delivery and do you notice any trend for these values?
 ```sql
 ```
-## 7. What is the successful delivery percentage for each runner?
+### 7. What is the successful delivery percentage for each runner?
 ```sql
 ```
 
