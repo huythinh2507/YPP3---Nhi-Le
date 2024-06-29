@@ -1,6 +1,6 @@
 ## 🍜 Case Study #1 - Danny's Diner
 - [Case Study #1 - Danny's Diner](https://8weeksqlchallenge.com/case-study-1/)
-- [Reference Answer](https://8weeksqlchallenge.com/case-study-1/)
+- [Reference Answer](https://github.com/katiehuangx/8-Week-SQL-Challenge/tree/main/Case%20Study%20%231%20-%20Danny's%20Diner)
 
 ***
 
