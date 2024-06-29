@@ -1,12 +1,19 @@
-# A. Digital Analysis
-## 1. How many users are there?
+## Case Study #6: Clique Bait
+- [Case Study #6: Clique Bait](https://8weeksqlchallenge.com/case-study-6/)
+- [Reference Answer](https://github.com/katiehuangx/8-Week-SQL-Challenge/tree/main/Case%20Study%20%236%20-%20Clique%20Bait)
+
+***
+
+## 📚 My Solution
+## A. Digital Analysis
+### 1. How many users are there?
 ```sql
 SELECT 
   COUNT(DISTINCT user_id) AS count_user
 FROM clique_bait.users
 ```
 
-## 2. How many cookies does each user have on average?
+### 2. How many cookies does each user have on average?
 ```sql
 WITH cookies as (
 SELECT 
@@ -20,7 +27,8 @@ ORDER BY user_id
 SELECT ROUND(AVG(count_cookies),0) AS avg_cookie_id
 FROM cookies
 ```
-## 3. What is the unique number of visits by all users per month?
+
+### 3. What is the unique number of visits by all users per month?
 ```sql
 SELECT 
 	DATE_PART('MONTH', event_time) AS month,
@@ -30,7 +38,7 @@ GROUP BY month
 ORDER BY month
 ```
 
-## 4. What is the number of events for each event type?
+### 4. What is the number of events for each event type?
 ```sql
 SELECT 
 	event_type,
@@ -40,7 +48,7 @@ GROUP BY event_type
 ORDER BY event_type
 ```
 
-## 5. What is the percentage of visits which have a purchase event?
+### 5. What is the percentage of visits which have a purchase event?
 ```sql
 1/
 SELECT 
@@ -54,6 +62,7 @@ WHERE ei.event_name ILIKE 'purchase' -- remove WHERE to see visit percentage of 
 GROUP BY ei.event_name
 ORDER BY ei.event_name
 ```
+
 ```sql
 2/
 WITH count_visit_purchase AS (
@@ -72,5 +81,4 @@ SELECT ROUND(100 * count_visit/(SELECT COUNT(DISTINCT visit_id) FROM clique_bait
 FROM count_visit_purchase
 ```
 
-## 6. What is the percentage of visits which view the checkout page but do not have a purchase event?
-which visit_id view the checkout page and that visit_id never have a purchase event
+### 6. What is the percentage of visits which view the checkout page but do not have a purchase event?
