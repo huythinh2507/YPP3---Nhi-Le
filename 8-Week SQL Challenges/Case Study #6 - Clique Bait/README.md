@@ -82,3 +82,39 @@ FROM count_visit_purchase
 ```
 
 ### 6. What is the percentage of visits which view the checkout page but do not have a purchase event?
+
+### 7.  What are the top 3 pages by number of views?
+```sql
+SELECT ph.page_name, COUNT(e.page_id) AS count_view
+FROM clique_bait.events AS e
+JOIN clique_bait.page_hierarchy AS ph 
+	ON e.page_id = ph.page_id
+WHERE e.event_type = 1
+GROUP BY ph.page_name
+ORDER BY count_view desc
+LIMIT 3
+```
+
+### 8. What is the number of views and cart adds for each product category?
+```sql 
+SELECT ph.product_category, 
+	SUM(CASE WHEN e.event_type = 1 THEN 1 END) AS count_views, 
+	SUM(CASE WHEN e.event_type = 2 THEN 1 END) AS count_cart_adds
+FROM clique_bait.events AS e
+JOIN clique_bait.page_hierarchy AS ph
+	ON e.page_id = ph.page_id
+WHERE product_category IS NOT NULL
+GROUP BY ph.product_category
+ORDER BY ph.product_category
+```
+
+### 9. What are the top 3 products by purchases?
+```sql
+SELECT ph.page_name, COUNT(e.page_id) AS count_purchases
+FROM clique_bait.events AS e
+	JOIN clique_bait.page_hierarchy AS ph
+	ON e.page_id = ph.page_id
+WHERE e.event_type = 3
+GROUP BY ph.page_name
+LIMIT 3
+```
