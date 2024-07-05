@@ -1,0 +1,7 @@
+Note Khoi
+
+View program:
+- Recommend for you: chưa bao gồm đủ điều kiện khi truy vấn (thiếu event__type = 1, count_tag)
+- Popular: sai tiêu chí xét (không dựa theo user favorite category)
+- Best - seller: lấy từ event_log (event_type = purchase) - tính số lượt mua 
+- trending: 
