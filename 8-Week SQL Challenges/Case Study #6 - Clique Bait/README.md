@@ -118,3 +118,9 @@ WHERE e.event_type = 3
 GROUP BY ph.page_name
 LIMIT 3
 ```
+## B. Product Funnel Analysis
+### 1. How many times was each product viewed?
+### 2. How many times was each product added to cart?
+### 3. How many times was each product added to a cart but not purchased (abandoned)?
+### 4. How many times was each product purchased?
+
