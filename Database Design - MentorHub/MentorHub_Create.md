@@ -1,7 +1,7 @@
 ```sql
 
-CREATE DATABASE Mentor;
-USE Mentor;
+CREATE DATABASE MentorHub;
+USE MentorHub;
 GO
 
 CREATE TABLE [User] (
