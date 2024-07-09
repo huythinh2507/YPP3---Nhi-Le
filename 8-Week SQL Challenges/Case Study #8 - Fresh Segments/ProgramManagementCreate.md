@@ -1,4 +1,4 @@
-
+```sql
 CREATE DATABASE MentorHub;
 USE MentorHub;
 GO
@@ -549,3 +549,4 @@ INSERT INTO UserOnline (user_id, online_date, online_time) VALUES
 
 -- Create function to get config value
 
+```
