@@ -1,4 +1,5 @@
 ```sql
+
 CREATE DATABASE Mentor;
 USE Mentor;
 GO
