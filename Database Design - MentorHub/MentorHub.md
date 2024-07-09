@@ -1,9 +1,7 @@
-```sql 
-/*
-DROP DATABASE IF EXISTS MentorHub;
-CREATE DATABASE MentorHub;
-USE MentorHub;
-*/
+``` sql
+CREATE DATABASE Mentor;
+USE Mentor;
+GO
 
 CREATE TABLE [User] (
     id INT PRIMARY KEY,
@@ -12,8 +10,8 @@ CREATE TABLE [User] (
 );
 
 CREATE TABLE Category (
-    id INT PRIMARY KEY,
-    category_name VARCHAR(255)
+  id INT PRIMARY KEY IDENTITY(1,1),
+  name VARCHAR(255)
 );
 
 CREATE TABLE Program (
@@ -67,12 +65,26 @@ CREATE TABLE ChallengeUser (
     date_submission DATETIME
 );
 
+CREATE TABLE SourceImage (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    asset_id INT,
+    source_id INT,
+    source_type_id INT
+);
+
 CREATE TABLE Course (
-    id INT PRIMARY KEY,
-    course_name VARCHAR(255),
-    description VARCHAR(255),
-    price FLOAT,
-    user_id INT FOREIGN KEY REFERENCES [user](id)
+  id INT PRIMARY KEY IDENTITY(1,1),
+  name NVARCHAR(255),
+  category_id INT,
+  price DECIMAL(10, 2),
+  description TEXT,
+  created_at DATETIME,
+  [user_id] INT,
+  pass_condition INT,
+  thumbnail_id INT,
+  FOREIGN KEY (category_id) REFERENCES Category(id),
+  FOREIGN KEY ([user_id]) REFERENCES [User](id),
+  FOREIGN KEY (thumbnail_id) REFERENCES SourceImage(id)
 );
 
 CREATE TABLE Review (
@@ -131,6 +143,44 @@ CREATE TABLE OrderDetails (
     source_type_id INT
 );
 
+CREATE TABLE CartItem (
+    id INT PRIMARY KEY,
+    user_id INT FOREIGN KEY REFERENCES [user](id),
+    source_id INT,
+    source_type_id INT
+);
+
+CREATE TABLE Setting (
+    id INT PRIMARY KEY,
+    setting_type VARCHAR(255),
+    setting_name VARCHAR(255),
+    setting_value INT
+);
+
+CREATE TABLE Tag (
+    id INT PRIMARY KEY,
+    tag_name VARCHAR(255)
+);
+
+CREATE TABLE SourceTag (
+    source_id INT,
+    source_type_id INT,
+    tag_id INT,
+    PRIMARY KEY (source_id, source_type_id, tag_id)
+);
+
+CREATE TABLE AdsProgram (
+    program_id INT FOREIGN KEY (program_id) REFERENCES program(id),
+    startAt DATETIME,
+    endAt DATETIME 
+);
+
+CREATE TABLE UserOnline (
+    user_id INT FOREIGN KEY REFERENCES [user](id),
+    online_date DATETIME,
+    online_time VARCHAR(255)
+);
+
 INSERT INTO [User] (id, full_name, role_id) VALUES
 (1, 'Alice', 3),
 (2, 'Bob', 3),
@@ -142,13 +192,13 @@ INSERT INTO [User] (id, full_name, role_id) VALUES
 (8, 'Heidi', 3),
 (9, 'Ivan', 3);
 
-INSERT INTO Category (id, category_name) VALUES
-(1, 'Information Technology'),
-(2, 'UI/UX Design'),
-(3, 'Marketing'),
-(4, 'Lifestyle'),
-(5, 'Photography'),
-(6, 'Video');
+INSERT INTO Category (name) VALUES
+('Information Technology'),
+('UI/UX Design'),
+('Marketing'),
+('Lifestyle'),
+('Photography'),
+('Video');
 
 INSERT INTO Program (id, user_id, program_name, description, price, category_id, asset_id) VALUES
 (1, 5, 'Software Engineering Fundamentals', 'Essential software engineering concepts', 33.99, 1, 101),
@@ -167,12 +217,37 @@ INSERT INTO Program (id, user_id, program_name, description, price, category_id,
 (14, 5, 'Mobile App Development with Flutter', 'Building mobile apps using Flutter', 65.00, 4, 114),
 (15, 1, 'DevOps and Continuous Integration', 'Introduction to DevOps practices and tools', 75.00, 1, 115);
 
-INSERT INTO Course (id, course_name, description, price, user_id) VALUES
-(1, 'Grow Your Video Editing Skills from Experts', 'Essential software engineering concepts', 7.99, 1),
-(2, 'Easy and Creative Food Art Ideas Decoration', 'Data analysis and machine learning mastery', 5.99, 2),
-(3, 'Create Your Own Sustainable Fashion Style', 'Interactive e-learning platform', 6.29, 3),
-(4, 'Grow Your Skills Fashion Marketing', 'Personalized professional growth through mentorship', 5.99, 4),
-(5, 'UI Design, a User-Centered Approach', 'Comprehensive training in digital marketing strategies and tools', 6.39, 5);
+INSERT INTO Course (name, category_id, price, description, created_at, [user_id], pass_condition) VALUES
+('Introduction to Python Programming', 1, 49.99, 'Learn Python programming basics and fundamentals.', CURRENT_TIMESTAMP, 2, 70),
+('UI/UX Design Principles', 2, 79.99, 'Explore principles of user interface and user experience design.', CURRENT_TIMESTAMP, 3, 80),
+('Digital Marketing Strategies', 3, 59.99, 'Discover effective digital marketing strategies and techniques.', CURRENT_TIMESTAMP, 4, 75),
+('Healthy Lifestyle Habits', 4, 29.99, 'Learn practical tips and habits for a healthy lifestyle.', CURRENT_TIMESTAMP, 6, 60),
+('Photography Masterclass', 4, 89.99, 'Master the art of photography with professional techniques.', CURRENT_TIMESTAMP, 5, 85),
+('Video Production Essentials', 5, 69.99, 'Essential skills and tools for producing high-quality videos.', CURRENT_TIMESTAMP, 2, 80),
+('Advanced Data Structures in C++', 6, 99.99, 'Advanced data structures and algorithms in C++ programming language.', CURRENT_TIMESTAMP, 3, 85),
+('Introduction to Web Development', 2, 49.99, 'Start your journey into web development with HTML, CSS, and JavaScript.', CURRENT_TIMESTAMP, 5, 70),
+('Effective Communication Skills', 3, 39.99, 'Develop effective communication skills for personal and professional success.', CURRENT_TIMESTAMP, 6, 65),
+('Financial Planning and Budgeting', 1, 79.99, 'Learn how to plan your finances and create effective budgets.', CURRENT_TIMESTAMP, 5, 75),
+('Data Science with R', 1, 59.99, 'An introductory course on data science using R programming language.', CURRENT_TIMESTAMP, 2, 75),
+('Graphic Design Basics', 2, 49.99, 'Learn the basics of graphic design and essential tools.', CURRENT_TIMESTAMP, 3, 70),
+('Social Media Marketing', 3, 39.99, 'Effective strategies for marketing on social media platforms.', CURRENT_TIMESTAMP, 4, 65),
+('Personal Development and Wellness', 4, 29.99, 'Techniques for improving personal development and wellness.', CURRENT_TIMESTAMP, 5, 60),
+('Advanced Photography Techniques', 5, 89.99, 'Advanced techniques for professional photography.', CURRENT_TIMESTAMP, 6, 85),
+('Video Editing for Beginners', 6, 69.99, 'A beginner’s guide to video editing and essential tools.', CURRENT_TIMESTAMP, 2, 80),
+('Machine Learning with Python', 1, 99.99, 'Advanced machine learning concepts and applications using Python.', CURRENT_TIMESTAMP, 3, 85),
+('User Experience Research', 2, 79.99, 'Methods and tools for conducting user experience research.', CURRENT_TIMESTAMP, 4, 80),
+('Content Marketing Strategies', 3, 59.99, 'Effective strategies for content marketing.', CURRENT_TIMESTAMP, 5, 75),
+('Mindfulness and Meditation', 4, 29.99, 'Learn techniques for mindfulness and meditation.', CURRENT_TIMESTAMP, 6, 60),
+('Portrait Photography', 5, 89.99, 'Master the art of portrait photography.', CURRENT_TIMESTAMP, 2, 85),
+('Advanced Videography', 6, 99.99, 'Advanced techniques and tools for professional videography.', CURRENT_TIMESTAMP, 3, 90),
+('Data Analysis with Excel', 1, 49.99, 'Learn how to analyze data effectively using Excel.', CURRENT_TIMESTAMP, 4, 70),
+('Design Thinking', 2, 79.99, 'An introduction to design thinking principles and practices.', CURRENT_TIMESTAMP, 5, 80),
+('SEO Best Practices', 3, 59.99, 'Learn the best practices for search engine optimization.', CURRENT_TIMESTAMP, 6, 75),
+('Healthy Eating Habits', 4, 29.99, 'Develop healthy eating habits for a better lifestyle.', CURRENT_TIMESTAMP, 2, 65),
+('Landscape Photography', 5, 89.99, 'Techniques for capturing stunning landscape photos.', CURRENT_TIMESTAMP, 3, 85),
+('Film Production Basics', 6, 69.99, 'Learn the basics of film production and essential tools.', CURRENT_TIMESTAMP, 4, 80),
+('Introduction to SQL', 1, 49.99, 'Learn SQL for database management and data analysis.', CURRENT_TIMESTAMP, 5, 70),
+('Web Accessibility', 2, 79.99, 'Best practices for creating accessible web designs.', CURRENT_TIMESTAMP, 6, 80);
 
 INSERT INTO Challenge (id, category_id, challenge_name, description, location, phase, start_date) VALUES
 (1, 1, 'Image Classification', 'The challenge is to develop a deep learning model', 'Remote', 'Starting Phase', '2024-06-26'),
@@ -311,12 +386,7 @@ INSERT INTO OrderDetails (id, order_id, source_id, source_type_id) VALUES
 (7, 3, 2, 3),
 (8, 4, 5, 3);
 
-CREATE TABLE CartItem (
-    id INT PRIMARY KEY,
-    user_id INT FOREIGN KEY REFERENCES [user](id),
-    source_id INT,
-    source_type_id INT
-)
+
 
 INSERT INTO CartItem (id, user_id, source_id, source_type_id) VALUES
 (1, 1, 1, 3),
@@ -328,12 +398,7 @@ INSERT INTO CartItem (id, user_id, source_id, source_type_id) VALUES
 (7, 3, 2, 3),
 (8, 4, 5, 3);
 
-CREATE TABLE Setting (
-    id INT PRIMARY KEY,
-    setting_type VARCHAR(255),
-    setting_name VARCHAR(255),
-    setting_value INT
-);
+
 
 INSERT INTO Setting (id, setting_type, setting_name, setting_value) VALUES
 (1, 'SourceType', 'course', 1),
@@ -341,12 +406,8 @@ INSERT INTO Setting (id, setting_type, setting_name, setting_value) VALUES
 (3, 'SourceType', 'program', 3),
 (4, 'Role', 'Admin', 1),
 (5, 'Role', 'Mentor', 2),
-(6, 'Role', 'Mentee', 3)
+(6, 'Role', 'Mentee', 3);
 
-CREATE TABLE Tag (
-    id INT PRIMARY KEY,
-    tag_name VARCHAR(255)
-);
 
 INSERT INTO Tag(id, tag_name) VALUES
 (1, 'Python'),
@@ -371,12 +432,6 @@ INSERT INTO Tag(id, tag_name) VALUES
 (20, 'Flutter'),
 (21, 'DevOps');
 
-CREATE TABLE SourceTag (
-    source_id INT,
-    source_type_id INT,
-    tag_id INT,
-    PRIMARY KEY (source_id, source_type_id, tag_id)
-);
 
 INSERT INTO SourceTag (source_id, source_type_id, tag_id) VALUES
 (1, 3, 4),
@@ -433,41 +488,25 @@ INSERT INTO SourceTag (source_id, source_type_id, tag_id) VALUES
 (14, 2, 19),
 (15, 2, 6);
 
-CREATE TABLE SourceImage (
-    id INT PRIMARY KEY,
-    asset_id INT,
-    source_id INT,
-    source_type_id INT
-);
+INSERT INTO SourceImage (asset_id, source_id, source_type_id) VALUES
+(1, 1, 3),
+(2, 2, 1),
+(3, 3, 2),
+(4, 4, 3),
+(5, 5, 3),
+(6, 1, 3),
+(7, 2, 2),
+(8, 3, 2),
+(9, 4, 1),
+(10, 1, 3);
 
-INSERT INTO SourceImage (id, asset_id, source_id, source_type_id) VALUES
-(1, 1, 1, 3),
-(2, 2, 2, 1),
-(3, 3, 3, 2),
-(4, 4, 4, 3),
-(5, 5, 5, 3),
-(6, 6, 1, 3),
-(7, 7, 2, 2),
-(8, 8, 3, 2),
-(9, 9, 4, 1),
-(10, 10, 1, 3);
 
-CREATE TABLE AdsProgram (
-    program_id INT FOREIGN KEY (program_id) REFERENCES program(id),
-    startAt DATETIME,
-    endAt DATETIME 
-);
 
 INSERT INTO AdsProgram (program_id, startAt, endAt) VALUES
 (1, '2024-07-01 00:00:00', '2024-07-31 23:59:59'),
 (3, '2024-08-01 00:00:00', '2024-08-15 23:59:59'),
 (5, '2024-07-15 00:00:00', '2024-08-15 23:59:59');
 
-CREATE TABLE UserOnline (
-    user_id INT FOREIGN KEY REFERENCES [user](id),
-    online_date DATETIME,
-    online_time VARCHAR(255)
-)
 
 INSERT INTO UserOnline (user_id, online_date, online_time) VALUES
 (1, '2024-01-15', '08:30:00'),
