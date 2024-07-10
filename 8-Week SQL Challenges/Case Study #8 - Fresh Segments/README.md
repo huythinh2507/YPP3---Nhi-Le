@@ -1,9 +1,4 @@
 ```sql 
-/*
-DROP DATABASE IF EXISTS MentorHub;
-CREATE DATABASE MentorHub;
-USE MentorHub;
-*/
 
 CREATE TABLE [User] (
     id INT PRIMARY KEY,
