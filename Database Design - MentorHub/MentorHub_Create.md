@@ -1,13 +1,31 @@
 ```sql
-
-CREATE DATABASE MentorHub;
-USE MentorHub;
-GO
-
-CREATE TABLE [User] (
+CREATE TABLE Setting (
     id INT PRIMARY KEY,
-    full_name VARCHAR(255),
-	role_id INT 
+    setting_type VARCHAR(255),
+    setting_name VARCHAR(255),
+    setting_value INT
+);
+CREATE TABLE Jobtitle (
+   id INT NOT NULL PRIMARY KEY,
+   name VARCHAR(255)
+);
+
+CREATE TABLE Location (
+   id INT NOT NULL PRIMARY KEY,
+   name VARCHAR(255)
+);
+CREATE TABLE [User] (
+   id INT PRIMARY KEY,
+   name VARCHAR(255),
+   location_id INT,
+   jobtitle_id INT,
+   role_id INT,
+   create_at DATETIME,
+   age INT,
+   gender VARCHAR(10),
+   status BIT
+   FOREIGN KEY (jobtitle_id) REFERENCES Jobtitle(id),
+   FOREIGN KEY (location_id) REFERENCES Location(id),
 );
 
 CREATE TABLE Category (
@@ -50,6 +68,7 @@ CREATE TABLE ProgramMentor (
 
 CREATE TABLE Challenge (
     id INT PRIMARY KEY,
+	user_id INT FOREIGN KEY REFERENCES [user](id),
     category_id INT FOREIGN KEY REFERENCES category(id),
     challenge_name VARCHAR(255),
     description VARCHAR(255),
@@ -151,12 +170,7 @@ CREATE TABLE CartItem (
     source_type_id INT
 );
 
-CREATE TABLE Setting (
-    id INT PRIMARY KEY,
-    setting_type VARCHAR(255),
-    setting_name VARCHAR(255),
-    setting_value INT
-);
+
 
 CREATE TABLE Tag (
     id INT PRIMARY KEY,
@@ -181,4 +195,107 @@ CREATE TABLE UserOnline (
     online_date DATETIME,
     online_time VARCHAR(255)
 );
+
+CREATE TABLE FollowUser (
+   id INT NOT NULL PRIMARY KEY,
+   follower_id INT,
+   followee_id INT,
+   datefollow DATETIME,
+   FOREIGN KEY (follower_id) REFERENCES [User](id),
+   FOREIGN KEY (followee_id) REFERENCES [User](id)
+);
+CREATE TABLE SourceTemplate (
+   id INT NOT NULL PRIMARY KEY,
+   template_id INT,
+   source_id INT,
+   sourcetype_id INT,
+   FOREIGN KEY (sourcetype_id) REFERENCES Setting(id)
+);
+
+CREATE TABLE CredentialIssued (
+   id INT NOT NULL PRIMARY KEY,
+   sourcetemplate_id INT,
+   user_id INT,
+   credentialcode VARCHAR(50),
+   certified_at DATETIME,
+   FOREIGN KEY (sourcetemplate_id) REFERENCES SourceTemplate(id),
+   FOREIGN KEY (user_id) REFERENCES [User](id)
+);
+
+CREATE TABLE Company (
+    id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(255),
+    img VARCHAR(255)
+);
+CREATE TABLE WorkingType (
+	id INT PRIMARY KEY,
+	name VARCHAR(255),
+)
+CREATE TABLE Experience (
+    id INT NOT NULL PRIMARY KEY,
+    jobtitle_id INT,
+    company_id INT,
+    type_id INT,
+    user_id INT,
+    isworking BIT,
+    FOREIGN KEY (company_id) REFERENCES Company(id),
+    FOREIGN KEY (user_id) REFERENCES [User](id),
+    FOREIGN KEY (jobtitle_id) REFERENCES Jobtitle(id),
+	FOREIGN KEY (type_id) REFERENCES WorkingType(id)
+);
+
+CREATE TABLE University (
+    id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(255),
+    img VARCHAR(255)
+);
+
+CREATE TABLE Education (
+    id INT NOT NULL PRIMARY KEY,
+    degree VARCHAR(255),
+    university_id INT,
+    user_id INT,
+    FOREIGN KEY (university_id) REFERENCES University(id),
+    FOREIGN KEY (user_id) REFERENCES [User](id)
+);
+
+CREATE TABLE Skill (
+    id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE UserSkill (
+    id INT NOT NULL PRIMARY KEY,
+    user_id INT,
+    skill_id INT,
+    FOREIGN KEY (user_id) REFERENCES [User](id),
+    FOREIGN KEY (skill_id) REFERENCES Skill(id)
+);
+
+CREATE TABLE Event (
+    id INT NOT NULL PRIMARY KEY,
+    title VARCHAR(255),
+    user_id INT,
+    views INT,
+    create_at DATETIME
+    FOREIGN KEY (user_id) REFERENCES [User](id)
+);
+CREATE TABLE EventUser (
+    id INT PRIMARY KEY,
+    event_id INT,
+    user_id INT,
+    FOREIGN KEY (event_id) REFERENCES Event(id),
+    FOREIGN KEY (user_id) REFERENCES [User](id),
+);
+
+CREATE TABLE MentorReview (
+    id INT PRIMARY KEY,
+    sender_id INT,
+    receiver_id INT,
+    rating_star INT,
+    content VARCHAR(255),
+    FOREIGN KEY (sender_id) REFERENCES [user](id),
+    FOREIGN KEY (receiver_id) REFERENCES [user](id)
+);
+
 ```

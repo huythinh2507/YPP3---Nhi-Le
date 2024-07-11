@@ -1,15 +1,33 @@
 ```sql
+INSERT INTO Setting (id, setting_type, setting_name, setting_value) VALUES
+(1, 'SourceType', 'course', 1),
+(2, 'SourceType', 'challenge', 2),
+(3, 'SourceType', 'program', 3),
+(4, 'Role', 'Admin', 1),
+(5, 'Role', 'Mentor', 2),
+(6, 'Role', 'Mentee', 3);
 
-INSERT INTO [User] (id, full_name, role_id) VALUES
-(1, 'Alice', 3),
-(2, 'Bob', 3),
-(3, 'Charlie', 3),
-(4, 'David', 3),
-(5, 'Eve', 2),
-(6, 'Frank', 2),
-(7, 'Grace', 3),
-(8, 'Heidi', 3),
-(9, 'Ivan', 3);
+
+INSERT INTO Jobtitle (id, name) VALUES
+(1, 'UI/UX Designer'),
+(2, 'Senior Software Engineer'),
+(3, 'CEO'),
+(4, 'Mentor'),
+(5, 'Data Scientist');
+
+INSERT INTO Location (id, name) VALUES
+(1, 'Ho Chi Minh'),
+(2, 'New York'),
+(3, 'Ha Noi'),
+(4, 'Chicago');
+
+INSERT INTO [User] (id, name, location_id, jobtitle_id, role_id, create_at, age, gender, status) VALUES
+(1, 'Tai Dang', 1, 1, 2, '2024-06-24 12:00:00', 24, 'Male',1),
+(2, 'Tai Pham', 2, 2, 2, '2024-05-24 12:00:00', 28, 'Male',1),
+(3, 'Tai Nguyen', 1, 2, 2, '2024-04-24 12:00:00', 30, 'Female',1),
+(4, 'Tai Loc', 3, 3, 3, '2024-03-24 12:00:00', 20, 'Male',1),
+(5, 'Khoa Nguyen', 1, 2, 2, '2024-06-24 12:00:00', 22, 'Female',0),
+(6, 'Dao Vo', 1, 4, 2, '2024-06-24 12:00:00', 30, 'Male',0);
 
 INSERT INTO Category (name) VALUES
 ('Information Technology'),
@@ -52,7 +70,7 @@ INSERT INTO Course (name, category_id, price, description, created_at, [user_id]
 ('Social Media Marketing', 3, 39.99, 'Effective strategies for marketing on social media platforms.', CURRENT_TIMESTAMP, 4, 65),
 ('Personal Development and Wellness', 4, 29.99, 'Techniques for improving personal development and wellness.', CURRENT_TIMESTAMP, 5, 60),
 ('Advanced Photography Techniques', 5, 89.99, 'Advanced techniques for professional photography.', CURRENT_TIMESTAMP, 6, 85),
-('Video Editing for Beginners', 6, 69.99, 'A beginner’s guide to video editing and essential tools.', CURRENT_TIMESTAMP, 2, 80),
+('Video Editing for Beginners', 6, 69.99, 'A beginner�s guide to video editing and essential tools.', CURRENT_TIMESTAMP, 2, 80),
 ('Machine Learning with Python', 1, 99.99, 'Advanced machine learning concepts and applications using Python.', CURRENT_TIMESTAMP, 3, 85),
 ('User Experience Research', 2, 79.99, 'Methods and tools for conducting user experience research.', CURRENT_TIMESTAMP, 4, 80),
 ('Content Marketing Strategies', 3, 59.99, 'Effective strategies for content marketing.', CURRENT_TIMESTAMP, 5, 75),
@@ -68,22 +86,22 @@ INSERT INTO Course (name, category_id, price, description, created_at, [user_id]
 ('Introduction to SQL', 1, 49.99, 'Learn SQL for database management and data analysis.', CURRENT_TIMESTAMP, 5, 70),
 ('Web Accessibility', 2, 79.99, 'Best practices for creating accessible web designs.', CURRENT_TIMESTAMP, 6, 80);
 
-INSERT INTO Challenge (id, category_id, challenge_name, description, location, phase, start_date) VALUES
-(1, 1, 'Image Classification', 'The challenge is to develop a deep learning model', 'Remote', 'Starting Phase', '2024-06-26'),
-(2, 1, 'Fraud Detection Kaggle', 'Participate in a Kaggle competition', 'HCM', 'Starting Phase', '2024-06-27'),
-(3, 5, 'Short Story Writing', 'Writing a compelling short story', 'Remote', 'Starting Phase', '2024-06-23'),
-(4, 1, 'Data Prediction', 'Predicting data trends using ML', 'Remote', 'Ending Phase', '2024-06-27'),
-(5, 5, 'Recipe Development', 'Creating new and innovative recipes', 'Remote', 'Ending Phase', '2024-06-23'),
-(6, 1, 'E-commerce Website', 'Develop a full-stack e-commerce website', 'Remote', 'Starting Phase', '2024-07-01'),
-(7, 1, 'Sentiment Analysis', 'Analyze sentiment from social media data', 'Remote', 'Starting Phase', '2024-07-01'),
-(8, 2, 'Mobile App Design', 'Design a mobile app for a retail store', 'Remote', 'Starting Phase', '2024-07-01'),
-(9, 3, 'Email Marketing Campaign', 'Create an effective email marketing campaign', 'Remote', 'Starting Phase', '2024-07-01'),
-(10, 4, 'Personal Finance Blog', 'Write blog posts about personal finance', 'Remote', 'Starting Phase', '2024-07-01'),
-(11, 5, 'Food Photography', 'Capture high-quality photos of food dishes', 'Remote', 'Starting Phase', '2024-07-01'),
-(12, 6, 'Short Film Editing', 'Edit a short film with provided footage', 'Remote', 'Starting Phase', '2024-07-01'),
-(13, 1, 'Real-time Chat Application', 'Build a real-time chat application', 'Remote', 'Starting Phase', '2024-07-01'),
-(14, 2, 'Landing Page Optimization', 'Optimize the landing page of a website', 'Remote', 'Starting Phase', '2024-07-01'),
-(15, 5, 'Travel Vlog', 'Create a travel vlog with provided footage', 'Remote', 'Starting Phase', '2024-07-01');
+INSERT INTO Challenge (id, user_id, category_id, challenge_name, description, location, phase, start_date) VALUES
+(1,1,1, 'Image Classification', 'The challenge is to develop a deep learning model', 'Remote', 'Starting Phase', '2024-06-26'),
+(2,2,1, 'Fraud Detection Kaggle', 'Participate in a Kaggle competition', 'HCM', 'Starting Phase', '2024-06-27'),
+(3,3,5, 'Short Story Writing', 'Writing a compelling short story', 'Remote', 'Starting Phase', '2024-06-23'),
+(4,1,1, 'Data Prediction', 'Predicting data trends using ML', 'Remote', 'Ending Phase', '2024-06-27'),
+(5,2, 5, 'Recipe Development', 'Creating new and innovative recipes', 'Remote', 'Ending Phase', '2024-06-23'),
+(6,1, 1, 'E-commerce Website', 'Develop a full-stack e-commerce website', 'Remote', 'Starting Phase', '2024-07-01'),
+(7,2, 1, 'Sentiment Analysis', 'Analyze sentiment from social media data', 'Remote', 'Starting Phase', '2024-07-01'),
+(8,3, 2, 'Mobile App Design', 'Design a mobile app for a retail store', 'Remote', 'Starting Phase', '2024-07-01'),
+(9, 3,3, 'Email Marketing Campaign', 'Create an effective email marketing campaign', 'Remote', 'Starting Phase', '2024-07-01'),
+(10, 2,4, 'Personal Finance Blog', 'Write blog posts about personal finance', 'Remote', 'Starting Phase', '2024-07-01'),
+(11, 5,5, 'Food Photography', 'Capture high-quality photos of food dishes', 'Remote', 'Starting Phase', '2024-07-01'),
+(12, 1,6, 'Short Film Editing', 'Edit a short film with provided footage', 'Remote', 'Starting Phase', '2024-07-01'),
+(13, 2,1, 'Real-time Chat Application', 'Build a real-time chat application', 'Remote', 'Starting Phase', '2024-07-01'),
+(14, 3,2, 'Landing Page Optimization', 'Optimize the landing page of a website', 'Remote', 'Starting Phase', '2024-07-01'),
+(15, 6,5, 'Travel Vlog', 'Create a travel vlog with provided footage', 'Remote', 'Starting Phase', '2024-07-01');
 
 INSERT INTO Review (id, source_id, user_id, source_type_id, rating_star, content) VALUES
 (1, 2, 1, 3, 3, 'Excellent tool for tracking environmental impact.'),
@@ -129,8 +147,8 @@ INSERT INTO ProgramUser (program_id, user_id, progress_percent, status, startAt)
 (2, 1, 69, 'In Progress', '2024-04-01'),
 (4, 2, 61, 'In Progress', '2024-05-01'),
 (4, 3, 99, 'Completed', '2024-06-01'),
-(5, 6, 81, 'Completed', '2024-07-01'),
-(5, 7, 72, 'In Progress', '2024-08-01'),
+(5, 4, 81, 'Completed', '2024-07-01'),
+(5, 6, 72, 'In Progress', '2024-08-01'),
 (1, 2, 60, 'In Progress', '2024-07-10'),
 (2, 3, 45, 'In Progress', '2024-06-15'),
 (3, 4, 90, 'Completed', '2024-07-20'),
@@ -216,16 +234,6 @@ INSERT INTO CartItem (id, user_id, source_id, source_type_id) VALUES
 (6, 3, 1, 3),
 (7, 3, 2, 3),
 (8, 4, 5, 3);
-
-
-
-INSERT INTO Setting (id, setting_type, setting_name, setting_value) VALUES
-(1, 'SourceType', 'course', 1),
-(2, 'SourceType', 'challenge', 2),
-(3, 'SourceType', 'program', 3),
-(4, 'Role', 'Admin', 1),
-(5, 'Role', 'Mentor', 2),
-(6, 'Role', 'Mentee', 3);
 
 
 INSERT INTO Tag(id, tag_name) VALUES
@@ -354,6 +362,90 @@ INSERT INTO UserOnline (user_id, online_date, online_time) VALUES
 (4, '2024-12-22', '09:45:00'),
 (5, '2024-12-31', '10:00:00');
 
+INSERT INTO FollowUser (id, follower_id, followee_id, datefollow) VALUES
+(1, 1, 2, '2022-06-01 10:00:00'),
+(2, 4, 1, '2023-05-15 14:30:00'),
+(3, 2, 1, GETDATE()),
+(4, 3, 2, GETDATE());
+
+INSERT INTO SourceTemplate (id, template_id, source_id, sourcetype_id) VALUES
+(1, 1, 4, 1),
+(2, 2, 3, 3),
+(3, 3, 4, 3),
+(4, 5, 1, 2),
+(5, 4, 5, 1),
+(6, 6, 5, 1),
+(7, 7, 5, 2),
+(8, 8, 4, 3),
+(9, 9, 2, 3),
+(10, 10, 2, 2),
+(11, 11, 2, 2);
+
+INSERT INTO CredentialIssued (id, sourcetemplate_id, user_id, credentialcode, certified_at) VALUES
+(1, 2, 3, '123241', '2024-06-24 12:00:00'),
+(2, 3, 3, '453232', '2024-06-24 12:00:00'),
+(3, 9, 1, '214234', '2024-06-24 12:00:00'),
+(4, 10, 4, '132411', '2024-06-24 12:00:00'),
+(5, 4, 1, '234355', '2024-06-24 12:00:00'),
+(6, 11, 1, '143452', '2024-06-24 12:00:00');
+
+INSERT INTO Company (id, name, img) VALUES 
+(1, 'bbv', 'link'),
+(2, 'Microsoft', 'link'),
+(3, 'FPT Software', 'link');
+
+INSERT INTO WorkingType(id,name) VALUES
+(1 , 'Fulltime'),
+(2 , 'Partime'),
+(3 , 'Online Program' )
+
+INSERT INTO Experience (id, jobtitle_id, company_id, type_id, user_id,isworking) VALUES 
+(1, 1, 1, 1, 1,1),
+(2, 3, 2, 2, 2,1);
+
+INSERT INTO University (id, name, img) VALUES 
+(1, 'HCMC University of Technology and Education', 'link'),
+(2, 'Harvard University', 'link'),
+(3, 'Boston University', 'link');
+
+INSERT INTO Education (id, degree, university_id, user_id) VALUES 
+(1, 'Bachelor degree', 1, 1),
+(2, 'Master degree', 2, 2),
+(3, 'Master of Science', 3, 3);
+
+INSERT INTO Event (id, title, user_id, views, create_at) VALUES 
+(1, 'Zero to Hero - UI/UX Designers', 1, 0, '2024-06-29 12:00:00'),
+(2, 'Professional AI - Workshop', 1, 0, '2024-07-02 12:00:00'),
+(3, 'Hero to zero - Web Developers', 2, 0, '2024-07-03 12:00:00');
+
+INSERT INTO Skill (id, name) VALUES 
+(1, 'Design Software'),
+(2, 'Research'),
+(3, 'User Experience'),
+(4, 'User Interface Design');
+
+INSERT INTO UserSkill (id, user_id, skill_id) VALUES 
+(1, 1, 3),
+(2, 1, 4),
+(3, 2, 1);
+
+INSERT INTO EventUser(id , event_id,user_id) VALUES
+(1,1,1),
+(2,1,2),
+(3,1,3),
+(4,2,4)
+
+INSERT INTO MentorReview (id, sender_id, receiver_id, rating_star, content) VALUES
+(1, 1, 2, 5, 'Excellent work!'),
+(2, 2, 3, 4, 'Very helpful and insightful.'),
+(3, 3, 4, 3, 'Good mentee, but can improve.'),
+(4, 4, 5, 5, 'Amazing job. Highly recommend!'),
+(5, 5, 6, 2, 'Needs to be more punctual.'),
+(6, 1, 3, 4, 'Provided great scored.'),
+(7, 2, 4, 5, 'Exceptional mentee, very knowledgeable.'),
+(8, 3, 5, 3, 'Very good, smart guys.'),
+(9, 4, 6, 4, 'Great mentee, very supportive.'),
+(10, 5, 1, 5, 'Outstanding guidance and support.');
 -- INSERT TABLE config (
 --     id INT PRIMARY KEY,
 --     config_type VARCHAR(255),
@@ -367,5 +459,4 @@ INSERT INTO UserOnline (user_id, online_date, online_time) VALUES
 -- (3, "Trending Program", "Average Rating", 0.3)
 
 -- Create function to get config value
-
 ```
