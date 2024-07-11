@@ -592,11 +592,6 @@ CREATE TABLE CredentialIssued (
    FOREIGN KEY (user_id) REFERENCES [User](id)
 );
 
-CREATE TABLE Company (
-    id INT NOT NULL PRIMARY KEY,
-    name VARCHAR(255),
-    img VARCHAR(255)
-);
 CREATE TABLE WorkingType (
 	id INT PRIMARY KEY,
 	name VARCHAR(255),
