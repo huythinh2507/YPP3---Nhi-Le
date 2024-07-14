@@ -1,4 +1,4 @@
-![img](https://drive.google.com/file/d/1gyDxNfpDuKkrSX9l89IaK3bHo5LCcGW4/view?usp=drive_link)
+![img!](https://drive.google.com/file/d/1gyDxNfpDuKkrSX9l89IaK3bHo5LCcGW4/view?usp=drive_link)
 
 ### Get recommended programs
 ```sql
