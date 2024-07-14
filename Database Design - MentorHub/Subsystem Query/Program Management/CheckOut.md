@@ -1,0 +1,72 @@
+### Get payment method and card number of user 1 (*)
+```sql
+SELECT
+	up.card_number AS user_card_number,
+	pm.method AS user_card_method
+FROM
+    UserPaymentInfo up
+    JOIN PaymentMethod pm ON up.payment_method_id = pm.id
+WHERE 
+	up.user_id = 1;
+```
+
+### Get cart details of user 1 (*)
+```sql
+WITH CartDetails AS (
+    SELECT
+		ci.source_id,
+        p.program_name,
+        ci.source_type_id,
+        p.price,
+		v.discount,
+        u.[name] AS mentor_name
+    FROM 
+        CartItem ci
+        JOIN Program p ON p.id = ci.source_id AND ci.source_type_id =  (
+			SELECT setting_value
+			FROM GetSettingValue('SourceType', 'program')
+		)
+        JOIN [User] u ON u.id = p.user_id
+		JOIN Voucher v ON v.source_id = ci.source_id AND v.source_type_id = (
+			SELECT setting_value
+			FROM GetSettingValue('SourceType', 'program')
+		) AND v.quantity > 0
+    WHERE
+        ci.user_id = 1
+)
+```
+
+### Calculate price of cart details (*)
+```sql
+SELECT
+    SUM(price) AS subtotal_price,
+	SUM(price * discount / 100) AS total_discount,
+    SUM(price) - SUM(price * discount / 100) AS total_price
+FROM
+    CartDetails 
+```
+
+### Get program in you might also like (*)
+```sql
+WITH CartItemTag AS (
+	SELECT TOP 10 st.tag_id, COUNT(ci.source_id) tag_count
+	FROM 
+		CartItem ci
+		JOIN Program p ON p.id = ci.source_id AND ci.source_type_id = (
+			SELECT setting_value
+			FROM GetSettingValue('SourceType', 'program')
+		)
+		JOIN SourceTag st ON st.source_id = ci.source_id AND st.source_type_id = ci.source_type_id
+	WHERE ci.user_id = 1
+	GROUP BY st.tag_id
+	ORDER BY tag_count DESC
+)
+
+SELECT
+    p.id, p.program_name, p.price, p.description, COUNT(st.tag_id) AS tag_simlar_count
+FROM CartItemTag cit
+JOIN SourceTag st ON cit.tag_id = st.tag_id 
+JOIN Program p ON st.source_id = p.id
+GROUP BY p.id, p.program_name, p.price, p.description
+ORDER BY tag_simlar_count DESC
+```
