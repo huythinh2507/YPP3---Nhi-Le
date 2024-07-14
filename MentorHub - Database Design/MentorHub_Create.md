@@ -1,3 +1,4 @@
+```SQL
 CREATE database MentorHub
 GO
 
@@ -499,3 +500,4 @@ CREATE TABLE MentorReview (
   FOREIGN KEY (sender_id) REFERENCES [User](id),
   FOREIGN KEY (receiver_id) REFERENCES [User](id)
 );
+```
