@@ -1,3 +1,4 @@
+```sql
 USE MentorHub
 GO
 
@@ -1442,3 +1443,4 @@ INSERT INTO MentorReview (id, sender_id, receiver_id, rating_star, content) VALU
 (8, 3, 5, 3, 'Very good, smart guys.'),
 (9, 4, 6, 4, 'Great mentee, very supportive.'),
 (10, 5, 1, 5, 'Outstanding guidance and support.');
+```
