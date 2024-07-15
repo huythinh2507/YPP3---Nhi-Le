@@ -1,3 +1,6 @@
+### ERD
+![Checkout](https://github.com/user-attachments/assets/ceb3ef18-fdea-4cbd-a099-baeede6cd761)
+
 ### Get payment method and card number of user 1 (*)
 ```sql
 SELECT

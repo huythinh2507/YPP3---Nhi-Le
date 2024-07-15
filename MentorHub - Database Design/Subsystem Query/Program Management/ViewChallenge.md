@@ -1,3 +1,6 @@
+### ERD
+![View Program](https://github.com/user-attachments/assets/b457d7e6-fdae-4947-b4a5-4d06ea869a6a)
+
 ### Get recommended challenge (*)
 ```sql
 WITH LatestTags AS (

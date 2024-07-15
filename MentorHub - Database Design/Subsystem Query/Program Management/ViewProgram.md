@@ -1,4 +1,5 @@
-![img!](https://drive.google.com/file/d/1gyDxNfpDuKkrSX9l89IaK3bHo5LCcGW4/view?usp=drive_link)
+### ERD 
+<img src="https://github.com/user-attachments/assets/ee032d6d-00f1-4c15-a007-8d2ed9ae8aaf" width="800" height="750">
 
 ### Get recommended programs
 ```sql
