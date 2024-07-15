@@ -1,6 +1,6 @@
 ### ERD
 ![Program Detail](https://github.com/user-attachments/assets/0cbd4169-7d83-49b9-98be-f3e997893266)
-<img src="[https://github.com/user-attachments/assets/0cbd4169-7d83-49b9-98be-f3e997893266]" height="100">
+
 ### Get program details
 ```sql
 SELECT 
