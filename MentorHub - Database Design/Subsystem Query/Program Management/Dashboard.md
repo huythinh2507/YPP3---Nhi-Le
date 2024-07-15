@@ -1,5 +1,6 @@
 ### ERD
 <img src="https://github.com/user-attachments/assets/9293d3ae-c21d-4194-8c14-ed0a5c2a55cd" height="500">
+
 ### Get all programs and completed programs of user 2
 ```sql
 SELECT
