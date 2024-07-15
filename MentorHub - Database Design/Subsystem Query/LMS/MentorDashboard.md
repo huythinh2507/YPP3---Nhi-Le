@@ -38,7 +38,6 @@ WHERE DATEPART(DAY, online_date) = DATEPART(DAY, CURRENT_TIMESTAMP)
 ```
 
 ### New Enrollment
-
 ```sql
 SELECT
     COUNT(*) AS new_enrollment
