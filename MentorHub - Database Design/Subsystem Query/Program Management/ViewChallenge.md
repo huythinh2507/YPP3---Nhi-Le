@@ -1,5 +1,5 @@
 ### ERD
-![View Challenges](https://github.com/user-attachments/assets/ee032d6d-00f1-4c15-a007-8d2ed9ae8aaf)
+<img src="https://github.com/user-attachments/assets/ee032d6d-00f1-4c15-a007-8d2ed9ae8aaf" width="800" height="700">
 
 ### Get recommended challenge (*)
 ```sql
