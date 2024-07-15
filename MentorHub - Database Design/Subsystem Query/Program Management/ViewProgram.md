@@ -1,5 +1,5 @@
 ### ERD 
-![View Program](https://github.com/user-attachments/assets/b457d7e6-fdae-4947-b4a5-4d06ea869a6a)
+<img src="https://github.com/user-attachments/assets/ee032d6d-00f1-4c15-a007-8d2ed9ae8aaf" width="800" height="750">
 
 ### Get recommended programs
 ```sql
