@@ -1,5 +1,5 @@
 ### ERD
-![Program Detail](https://github.com/user-attachments/assets/0cbd4169-7d83-49b9-98be-f3e997893266)
+<img src="https://github.com/user-attachments/assets/0cbd4169-7d83-49b9-98be-f3e997893266" width="700" height="700">
 
 ### Get program details
 ```sql
