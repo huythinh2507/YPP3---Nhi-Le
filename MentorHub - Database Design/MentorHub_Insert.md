@@ -1,40 +1,39 @@
 ```sql
-USE MentorHub
-GO
+USE MentorHub;
 
-INSERT INTO role (name) VALUES ('mentee'), ('mentor'), ('admin');
+INSERT INTO Jobtitle (name) VALUES
+('UI/UX Designer'),
+('Senior Software Engineer'),
+('CEO'),
+('Mentor'),
+('Data Scientist');
 
-INSERT INTO Jobtitle (id, name) VALUES
-(1, 'UI/UX Designer'),
-(2, 'Senior Software Engineer'),
-(3, 'CEO'),
-(4, 'Mentor'),
-(5, 'Data Scientist');
+INSERT INTO Location (name) VALUES
+('Ho Chi Minh'),
+('New York'),
+('Ha Noi'),
+('Chicago');
 
-INSERT INTO Location (id, name) VALUES
-(1, 'Ho Chi Minh'),
-(2, 'New York'),
-(3, 'Ha Noi'),
-(4, 'Chicago');
-
-
-INSERT INTO [User] (name, asset_id, location_id, jobtitle_id, role_id, create_at, age, gender, status) VALUES 
-('John Doe', 1, 1, 1, 1, '2024-07-01 08:00:00', 40, 'Male', 1), -- Admin
-('Alice Smith', 2, 2, 2, 2, '2024-07-07 08:00:00', 35, 'Female', 1), -- Mentor
-('Bob Johnson', 3, 3, 3, 2, '2024-07-07 08:00:00', 36, 'Male', 1), -- Mentor
-('Carol White', 4, 4, 4, 2, '2024-07-07 08:00:00', 37, 'Female', 1), -- Mentor
-('David Brown', 5, 1, 5, 2, '2024-07-07 08:00:00', 38, 'Male', 1), -- Mentor
-('Eve Black', 6, 2, 1, 2, '2024-07-07 08:00:00', 39, 'Female', 1), -- Mentor
-('Frank Green', 7, 3, 2, 3, '2024-07-07 08:00:00', 20, 'Male', 1), -- Mentee
-('Grace Lee', 8, 4, 3, 3, '2024-07-07 08:00:00', 21, 'Female', 1), -- Mentee
-('Hank Martin', 9, 1, 4, 3, '2024-07-07 08:00:00', 22, 'Male', 1), -- Mentee
-('Ivy Clark', 10, 2, 5, 3, '2024-7-07 08:00:00', 23, 'Female', 1), -- Mentee
-('Jack Walker', 11, 3, 1, 3, '2024-07-07 08:00:00', 24, 'Male', 1), -- Mentee
-('Kara Adams', 12, 4, 2, 3, '2024-07-07 08:00:00', 25, 'Female', 1), -- Mentee
-('Liam Young', 13, 1, 3, 3, '2024-07-07 08:00:00', 26, 'Male', 1), -- Mentee
-('Mia King', 14, 2, 4, 3, '2024-07-07 08:00:00', 27, 'Female', 1), -- Mentee
-('Noah Scott', 15, 3, 5, 3, '2024-07-07 08:00:00', 28, 'Male', 1), -- Mentee
-('Olivia Baker', 16, 4, 1, 3, '2024-07-07 08:00:00', 29, 'Female', 1); -- Mentee
+INSERT INTO [User] (name, asset_id, location_id, jobtitle_id, role_id, create_at, age, gender, status, email, dob) VALUES 
+('John Doe', 1, 1, 1, 1, '2024-07-01 08:00:00', 40, 'Male', 1, 'zleffler@example.com',GETDATE()),
+('Alice Smith', 2, 2, 2, 2, '2024-07-07 08:00:00', 35, 'Female', 1, 'brian59@example.com', GETDATE()),
+('Bob Johnson', 3, 3, 3, 2, '2024-07-07 08:00:00', 36, 'Male', 1, 'jaquan94@example.com', GETDATE()),
+('Carol White', 4, 4, 4, 2, '2024-07-07 08:00:00', 37, 'Female', 1, 'brook64@example.net', GETDATE()),
+('David Brown', 5, 1, 5, 2, '2024-07-07 08:00:00', 38, 'Male', 1, 'lynch.daisy@example.com', GETDATE()),
+('Eve Black', 6, 2, 1, 2, '2024-07-07 08:00:00', 39, 'Female', 1, 'jerome.mccullough@example.com', GETDATE()),
+('Frank Green', 7, 3, 2, 3, '2024-07-07 08:00:00', 20, 'Male', 1, 'eusebio.cartwright@example.org', GETDATE()),
+('Grace Lee', 8, 4, 3, 3, '2024-07-07 08:00:00', 21, 'Female', 1,'megane42@example.net', GETDATE()),
+('Hank Martin', 9, 1, 4, 3, '2024-07-07 08:00:00', 22, 'Male', 1, 'tfahey@example.org', GETDATE()),
+('Ivy Clark', 10, 2, 5, 3, '2024-7-07 08:00:00', 23, 'Female', 1, 'christiansen.nico@example.org', GETDATE()),
+('Jack Walker', 11, 3, 1, 3, '2024-07-07 08:00:00', 24, 'Male', 1,'ehegmann@example.com', GETDATE()),
+('Kara Adams', 12, 4, 2, 3, '2024-07-07 08:00:00', 25, 'Female', 1,'harber.kiera@example.com', GETDATE()),
+('Liam Young', 13, 1, 3, 3, '2024-07-07 08:00:00', 26, 'Male', 1,'zaria19@example.org', GETDATE()),
+('Mia King', 14, 2, 4, 3, '2024-07-07 08:00:00', 27, 'Female', 1,'dion.muller@example.org', GETDATE()),
+('Noah Scott', 15, 3, 5, 3, '2024-07-07 08:00:00', 28, 'Male', 1,'blair54@example.com', GETDATE()),
+('Olivia Baker', 16, 4, 1, 3, '2024-07-07 08:00:00', 29, 'Female', 1,'wanda.herman@example.net', GETDATE()),
+('Carol', 9, 1, 4, 3, '2024-07-07 08:00:00', 22, 'Male', 1, 'pmuller@example.com', GETDATE()),
+('Martin', 7, 3, 2, 3, '2024-07-07 08:00:00', 20, 'Male', 1,'aubree.emard@example.org', GETDATE()),
+('White', 6, 2, 1, 2, '2024-07-07 08:00:00', 39, 'Female', 1, 'sallie.crist@example.com', GETDATE());
 
 INSERT INTO Category (name) VALUES
 ('Information Technology'),
@@ -100,8 +99,6 @@ INSERT INTO Course (name, category_id, price, description, created_at, mentor_id
 ('Web Accessibility', 2, 79.99, 'Best practices for creating accessible web designs.', CURRENT_TIMESTAMP, 6, 80);
 
 INSERT INTO SourceTag (source_id, source_type_id, tag_id) VALUES
-(1, 3, 4),
-(2, 3, 2),
 (2, 3, 11),
 (3, 3, 4),
 (3, 3, 5),
@@ -939,15 +936,15 @@ INSERT INTO OrderDetail (order_id, price, source_id, source_type_id) VALUES
 (5, 79.99, 30, 1);
 
 
-INSERT INTO CartItem (id, user_id, source_id, source_type_id) VALUES
-(1, 7, 1, 3),
-(2, 7, 2, 3),
-(3, 7, 2, 3),
-(4, 8, 4, 3),
-(5, 8, 5, 3),
-(6, 9, 1, 3),
-(7, 9, 2, 3),
-(8, 14, 5, 3);
+INSERT INTO CartItem (user_id, source_id, source_type_id) VALUES
+(7, 1, 3),
+(7, 2, 3),
+(7, 2, 3),
+(8, 4, 3),
+(8, 5, 3),
+(9, 1, 3),
+(9, 2, 3),
+(14, 5, 3);
 
 
 INSERT INTO Quiz (name, summary, attempts_allowed, passing_grade, duration, section_id) VALUES
@@ -1153,29 +1150,6 @@ INSERT INTO MenteeCourse (mentee_id, course_id, progress, enroll_at, cert_id, is
 (10, 1, 65, '2024-07-25 18:32:01', 37, '2024-07-01', '2025-07-01'),
 (10, 2, 92, '2024-07-25 18:32:01', 38, '2024-07-15', '2025-07-15');
 
-INSERT INTO [UserOnline] (user_id, online_date, online_time) VALUES
-(7, '2023-06-01', '01:00:00'),
-(7, '2023-06-01', '00:30:00'), 
-(7, '2023-06-01', '00:45:00'),  
-(8, '2023-06-01', '01:00:00'),  
-(8, '2023-06-01', '00:30:00'),  
-(8, '2023-06-01', '00:45:00'), 
-(11, '2023-06-01', '01:00:00'), 
-(11, '2023-06-01', '00:30:00'),  
-(11, '2023-06-01', '00:45:00'), 
-(12, '2023-06-01', '01:15:00'),  
-(12, '2023-06-01', '00:50:00'),  
-(12, '2023-06-01', '01:30:00'),  
-(13, '2023-06-01', '00:30:00'),  
-(13, '2023-06-01', '01:00:00'),  
-(13, '2023-06-01', '02:00:00'),  
-(14, '2023-06-01', '00:45:00'), 
-(14, '2023-06-01', '01:30:00'),  
-(14, '2023-06-01', '01:00:00'),  
-(15, '2023-06-01', '00:50:00'),  
-(15, '2023-06-01', '01:15:00'),  
-(15, '2023-06-01', '00:45:00');
-
 INSERT INTO FavouriteCategory (mentee_id, category_id) VALUES
 (7, 1),
 (7, 2),
@@ -1195,104 +1169,51 @@ INSERT INTO FavouriteCategory (mentee_id, category_id) VALUES
 (13, 2),
 (13, 1)
 
-INSERT INTO Setting (id, setting_type, setting_name, setting_value) VALUES
-(1, 'SourceType', 'course', 1),
-(2, 'SourceType', 'challenge', 2),
-(3, 'SourceType', 'program', 3),
-(4, 'Role', 'Admin', 1),
-(5, 'Role', 'Mentor', 2),
-(6, 'Role', 'Mentee', 3),
-(7, 'Criteria', 'Enrollments', 35),
-(8, 'Criteria', 'Completion Rate', 35),
-(9, 'Criteria', 'Average Learner Rating', 30),
-(10, 'Criteria', 'New Mentee', 30);
+INSERT INTO Setting (setting_type, setting_name, setting_value) VALUES
+('SourceType', 'course', 1),
+('SourceType', 'challenge', 2),
+('SourceType', 'program', 3),
+('Role', 'Admin', 1),
+('Role', 'Mentor', 2),
+('Role', 'Mentee', 3),
+('Criteria', 'Enrollments', 35),
+('Criteria', 'Completion Rate', 35),
+('Criteria', 'Average Learner Rating', 30),
+('Criteria', 'New Mentee', 30);
 
-INSERT INTO EventType (event_type_name) VALUES
-('Page View'),
-('Add to Cart'),
-('Purchase'),
-('Ad Impression'),
-('Ad Click'),
-('View Category');
+INSERT INTO Program (user_id, program_name, description, price, category_id, asset_id) VALUES
+(5, 'Software Engineering Fundamentals', 'Essential software engineering concepts', 33.99, 1, 101),
+(6, 'Data Science', 'Data analysis and machine learning mastery', 12.99, 1, 102),
+(5, 'Web Development Mastery', 'Interactive e-learning platform', 17.77, 1, 103),
+(6, 'Mentoring Hub', 'Personalized professional growth through mentorship', 19.99, 3, 104),
+(5, 'Digital Marketing Bootcamp', 'Comprehensive training in digital marketing strategies and tools', 99.99, 2, 105),
+(1, 'Machine Learning A-Z', 'Complete machine learning guide', 45.99, 1, 106),
+(2, 'Cloud Computing Basics', 'Introduction to cloud services and architecture', 29.99, 4, 107),
+(2, 'Cybersecurity Essentials', 'Fundamentals of cybersecurity practices', 39.99, 3, 108),
+(3, 'Advanced Java Programming', 'Deep dive into Java programming language', 55.00, 1, 109),
+(4, 'Blockchain and Cryptocurrency', 'Understanding blockchain technology and cryptocurrencies', 60.00, 4, 110),
+(5, 'Artificial Intelligence for Beginners', 'Basics of AI and its applications', 70.00, 1, 111),
+(3, 'Project Management Professional (PMP)', 'Comprehensive PMP certification prep', 80.00, 5, 112),
+(4, 'User Experience (UX) Design', 'Designing user-friendly interfaces', 50.00, 2, 113),
+(5, 'Mobile App Development with Flutter', 'Building mobile apps using Flutter', 65.00, 4, 114),
+(1, 'DevOps and Continuous Integration', 'Introduction to DevOps practices and tools', 75.00, 1, 115);
 
-
-INSERT INTO EventLog (user_id, source_id, source_type_id, event_time) VALUES
-(7, 1, 3, '2024-03-02 00:00:00'),
-(7, 1, 1, '2024-03-03 00:00:00'),
-(7, 3, 2, '2024-04-04 00:00:00'),
-(7, 2, 3, '2024-05-05 00:00:00'),
-(7, 2, 1, '2024-06-06 00:00:00'),
-(7, 4, 3, '2024-07-07 00:00:00'),
-(7, 5, 3, '2024-08-08 00:00:00'),
-(8, 3, 3, '2024-09-09 00:00:00'),
-(8, 1, 3, '2024-03-05 00:00:00'),
-(8, 2, 1, '2024-03-06 00:00:00'),
-(8, 3, 2, '2024-04-07 00:00:00'),
-(8, 4, 3, '2024-05-08 00:00:00'),
-(9, 2, 1, '2024-06-09 00:00:00'),
-(9, 4, 3, '2024-07-10 00:00:00'),
-(9, 5, 3, '2024-08-11 00:00:00'),
-(9, 3, 3, '2024-09-12 00:00:00'),
-(9, 1, 3, '2024-03-11 00:00:00'),
-(7, 2, 1, '2024-03-12 00:00:00'),
-(7, 3, 2, '2024-04-13 00:00:00'),
-(7, 4, 3, '2024-05-14 00:00:00'),
-
-(10, 1, 3, '2024-03-02 00:00:00'),
-(10, 1, 1, '2024-03-03 00:00:00'),
-(13, 3, 2, '2024-04-04 00:00:00'),
-(14, 2, 3, '2024-05-05 00:00:00'),
-(15, 2, 1, '2024-06-06 00:00:00'),
-(16,  4, 3, '2024-07-07 00:00:00'),
-(7,  5, 3, '2024-08-08 00:00:00'),
-(8,  3, 3, '2024-09-09 00:00:00'),
-(9,  1, 3, '2024-03-05 00:00:00'),
-(10,  2, 1, '2024-03-06 00:00:00'),
-(11,  3, 2, '2024-04-07 00:00:00'),
-(12,  4, 3, '2024-05-08 00:00:00'),
-(13,  2, 1, '2024-06-09 00:00:00'),
-(14, 4, 3, '2024-07-10 00:00:00'),
-(15,  5, 3, '2024-08-11 00:00:00'),
-(16,  3, 3, '2024-09-12 00:00:00'),
-(7,  1, 3, '2024-03-11 00:00:00'),
-(8,  2, 1, '2024-03-12 00:00:00'),
-(9,  3, 2, '2024-04-13 00:00:00'),
-(10,  4, 3, '2024-05-14 00:00:00');
-
-
-INSERT INTO Program (id, user_id, program_name, description, price, category_id, asset_id) VALUES
-(1, 5, 'Software Engineering Fundamentals', 'Essential software engineering concepts', 33.99, 1, 101),
-(2, 6, 'Data Science', 'Data analysis and machine learning mastery', 12.99, 1, 102),
-(3, 5, 'Web Development Mastery', 'Interactive e-learning platform', 17.77, 1, 103),
-(4, 6, 'Mentoring Hub', 'Personalized professional growth through mentorship', 19.99, 3, 104),
-(5, 5, 'Digital Marketing Bootcamp', 'Comprehensive training in digital marketing strategies and tools', 99.99, 2, 105),
-(6, 1, 'Machine Learning A-Z', 'Complete machine learning guide', 45.99, 1, 106),
-(7, 2, 'Cloud Computing Basics', 'Introduction to cloud services and architecture', 29.99, 4, 107),
-(8, 2, 'Cybersecurity Essentials', 'Fundamentals of cybersecurity practices', 39.99, 3, 108),
-(9, 3, 'Advanced Java Programming', 'Deep dive into Java programming language', 55.00, 1, 109),
-(10, 4, 'Blockchain and Cryptocurrency', 'Understanding blockchain technology and cryptocurrencies', 60.00, 4, 110),
-(11, 5, 'Artificial Intelligence for Beginners', 'Basics of AI and its applications', 70.00, 1, 111),
-(12, 3, 'Project Management Professional (PMP)', 'Comprehensive PMP certification prep', 80.00, 5, 112),
-(13, 4, 'User Experience (UX) Design', 'Designing user-friendly interfaces', 50.00, 2, 113),
-(14, 5, 'Mobile App Development with Flutter', 'Building mobile apps using Flutter', 65.00, 4, 114),
-(15, 1, 'DevOps and Continuous Integration', 'Introduction to DevOps practices and tools', 75.00, 1, 115);
-
-INSERT INTO Challenge (id, user_id, category_id, challenge_name, description, location, phase, start_date) VALUES
-(1,1,1, 'Image Classification', 'The challenge is to develop a deep learning model', 'Remote', 'Starting Phase', '2024-06-26'),
-(2,2,1, 'Fraud Detection Kaggle', 'Participate in a Kaggle competition', 'HCM', 'Starting Phase', '2024-06-27'),
-(3,3,5, 'Short Story Writing', 'Writing a compelling short story', 'Remote', 'Starting Phase', '2024-06-23'),
-(4,1,1, 'Data Prediction', 'Predicting data trends using ML', 'Remote', 'Ending Phase', '2024-06-27'),
-(5,2, 5, 'Recipe Development', 'Creating new and innovative recipes', 'Remote', 'Ending Phase', '2024-06-23'),
-(6,1, 1, 'E-commerce Website', 'Develop a full-stack e-commerce website', 'Remote', 'Starting Phase', '2024-07-01'),
-(7,2, 1, 'Sentiment Analysis', 'Analyze sentiment from social media data', 'Remote', 'Starting Phase', '2024-07-01'),
-(8,3, 2, 'Mobile App Design', 'Design a mobile app for a retail store', 'Remote', 'Starting Phase', '2024-07-01'),
-(9, 3,3, 'Email Marketing Campaign', 'Create an effective email marketing campaign', 'Remote', 'Starting Phase', '2024-07-01'),
-(10, 2,4, 'Personal Finance Blog', 'Write blog posts about personal finance', 'Remote', 'Starting Phase', '2024-07-01'),
-(11, 5,5, 'Food Photography', 'Capture high-quality photos of food dishes', 'Remote', 'Starting Phase', '2024-07-01'),
-(12, 1,6, 'Short Film Editing', 'Edit a short film with provided footage', 'Remote', 'Starting Phase', '2024-07-01'),
-(13, 2,1, 'Real-time Chat Application', 'Build a real-time chat application', 'Remote', 'Starting Phase', '2024-07-01'),
-(14, 3,2, 'Landing Page Optimization', 'Optimize the landing page of a website', 'Remote', 'Starting Phase', '2024-07-01'),
-(15, 6,5, 'Travel Vlog', 'Create a travel vlog with provided footage', 'Remote', 'Starting Phase', '2024-07-01');
+INSERT INTO Challenge (user_id, category_id, challenge_name, description, location, phase, start_date) VALUES
+(1,1, 'Image Classification', 'The challenge is to develop a deep learning model', 'Remote', 'Starting Phase', '2024-06-26'),
+(2,1, 'Fraud Detection Kaggle', 'Participate in a Kaggle competition', 'HCM', 'Starting Phase', '2024-06-27'),
+(3,5, 'Short Story Writing', 'Writing a compelling short story', 'Remote', 'Starting Phase', '2024-06-23'),
+(1,1, 'Data Prediction', 'Predicting data trends using ML', 'Remote', 'Ending Phase', '2024-06-27'),
+(2, 5, 'Recipe Development', 'Creating new and innovative recipes', 'Remote', 'Ending Phase', '2024-06-23'),
+(1, 1, 'E-commerce Website', 'Develop a full-stack e-commerce website', 'Remote', 'Starting Phase', '2024-07-01'),
+(2, 1, 'Sentiment Analysis', 'Analyze sentiment from social media data', 'Remote', 'Starting Phase', '2024-07-01'),
+(3, 2, 'Mobile App Design', 'Design a mobile app for a retail store', 'Remote', 'Starting Phase', '2024-07-01'),
+(3,3, 'Email Marketing Campaign', 'Create an effective email marketing campaign', 'Remote', 'Starting Phase', '2024-07-01'),
+(2,4, 'Personal Finance Blog', 'Write blog posts about personal finance', 'Remote', 'Starting Phase', '2024-07-01'),
+(5,5, 'Food Photography', 'Capture high-quality photos of food dishes', 'Remote', 'Starting Phase', '2024-07-01'),
+(1,6, 'Short Film Editing', 'Edit a short film with provided footage', 'Remote', 'Starting Phase', '2024-07-01'),
+(2,1, 'Real-time Chat Application', 'Build a real-time chat application', 'Remote', 'Starting Phase', '2024-07-01'),
+(3,2, 'Landing Page Optimization', 'Optimize the landing page of a website', 'Remote', 'Starting Phase', '2024-07-01'),
+(6,5, 'Travel Vlog', 'Create a travel vlog with provided footage', 'Remote', 'Starting Phase', '2024-07-01');
 
 
 INSERT INTO ProgramSource (program_id, source_id, source_type_id, source_order) VALUES
@@ -1359,88 +1280,536 @@ INSERT INTO Ads (source_type, thumbnail_id, start_at, end_at) VALUES
 (3, 2, '2023-12-01 08:00:00', '2023-12-31 23:59:59');
 
 
-INSERT INTO FollowUser (id, follower_id, followee_id, datefollow) VALUES
-(1, 1, 2, '2022-06-01 10:00:00'),
-(2, 4, 1, '2023-05-15 14:30:00'),
-(3, 2, 1, GETDATE()),
-(4, 3, 2, GETDATE());
+INSERT INTO FollowUser (follower_id, followee_id, datefollow) VALUES
+(1, 2, '2022-06-01 10:00:00'),
+(4, 1, '2023-05-15 14:30:00'),
+(2, 1, GETDATE()),
+(3, 2, GETDATE());
 
-INSERT INTO SourceTemplate (id, template_id, source_id, sourcetype_id) VALUES
-(1, 1, 4, 1),
-(2, 2, 3, 3),
-(3, 3, 4, 3),
-(4, 5, 1, 2),
-(5, 4, 5, 1),
-(6, 6, 5, 1),
-(7, 7, 5, 2),
-(8, 8, 4, 3),
-(9, 9, 2, 3),
-(10, 10, 2, 2),
-(11, 11, 2, 2);
+INSERT INTO SourceTemplate (template_id, source_id, sourcetype_id) VALUES
+(1, 4, 1),
+(2, 3, 3),
+(3, 4, 3),
+(5, 1, 2),
+(4, 5, 1),
+(6, 5, 1),
+(7, 5, 2),
+(8, 4, 3),
+(9, 2, 3),
+(10, 2, 2),
+(11, 2, 2);
 
-INSERT INTO CredentialIssued (id, sourcetemplate_id, user_id, credentialcode, certified_at) VALUES
-(1, 2, 3, '123241', '2024-06-24 12:00:00'),
-(2, 3, 3, '453232', '2024-06-24 12:00:00'),
-(3, 9, 1, '214234', '2024-06-24 12:00:00'),
-(4, 10, 4, '132411', '2024-06-24 12:00:00'),
-(5, 4, 1, '234355', '2024-06-24 12:00:00'),
-(6, 11, 1, '143452', '2024-06-24 12:00:00');
+INSERT INTO CredentialIssued (sourcetemplate_id, user_id, credentialcode, certified_at) VALUES
+(2, 3, '123241', '2024-06-24 12:00:00'),
+(3, 3, '453232', '2024-06-24 12:00:00'),
+(9, 1, '214234', '2024-06-24 12:00:00'),
+(10, 4, '132411', '2024-06-24 12:00:00'),
+(4, 1, '234355', '2024-06-24 12:00:00'),
+(11, 1, '143452', '2024-06-24 12:00:00');
 
-INSERT INTO Company (id, name, img) VALUES 
-(1, 'bbv', 'link'),
-(2, 'Microsoft', 'link'),
-(3, 'FPT Software', 'link');
+INSERT INTO Company (name, img) VALUES 
+('bbv', 'link'),
+('Microsoft', 'link'),
+('FPT Software', 'link');
 
-INSERT INTO WorkingType(id,name) VALUES
-(1 , 'Fulltime'),
-(2 , 'Partime'),
-(3 , 'Online Program' )
+INSERT INTO WorkingType(name) VALUES
+('Fulltime'),
+('Partime'),
+('Online Program' )
 
-INSERT INTO Experience (id, jobtitle_id, company_id, type_id, user_id,isworking) VALUES 
-(1, 1, 1, 1, 1,1),
-(2, 3, 2, 2, 2,1);
+INSERT INTO Experience (jobtitle_id, company_id, type_id, user_id,isworking) VALUES 
+(1, 1, 1, 1,1),
+(3, 2, 2, 2,1);
 
-INSERT INTO University (id, name, img) VALUES 
-(1, 'HCMC University of Technology and Education', 'link'),
-(2, 'Harvard University', 'link'),
-(3, 'Boston University', 'link');
+INSERT INTO University (name, img) VALUES 
+('HCMC University of Technology and Education', 'link'),
+('Harvard University', 'link'),
+('Boston University', 'link');
 
-INSERT INTO Education (id, degree, university_id, user_id) VALUES 
-(1, 'Bachelor degree', 1, 1),
-(2, 'Master degree', 2, 2),
-(3, 'Master of Science', 3, 3);
+INSERT INTO Education (degree, university_id, user_id) VALUES 
+('Bachelor degree', 1, 1),
+('Master degree', 2, 2),
+('Master of Science', 3, 3);
 
-INSERT INTO Event (id, title, user_id, views, create_at) VALUES 
-(1, 'Zero to Hero - UI/UX Designers', 1, 0, '2024-06-29 12:00:00'),
-(2, 'Professional AI - Workshop', 1, 0, '2024-07-02 12:00:00'),
-(3, 'Hero to zero - Web Developers', 2, 0, '2024-07-03 12:00:00');
+INSERT INTO Event (title, user_id, views, create_at) VALUES 
+('Zero to Hero - UI/UX Designers', 1, 0, '2024-06-29 12:00:00'),
+('Professional AI - Workshop', 1, 0, '2024-07-02 12:00:00'),
+('Hero to zero - Web Developers', 2, 0, '2024-07-03 12:00:00');
 
-INSERT INTO Skill (id, name) VALUES 
-(1, 'Design Software'),
-(2, 'Research'),
-(3, 'User Experience'),
-(4, 'User Interface Design');
+INSERT INTO Skill (name) VALUES 
+('Design Software'),
+('Research'),
+('User Experience'),
+('User Interface Design');
 
-INSERT INTO UserSkill (id, user_id, skill_id) VALUES 
-(1, 1, 3),
-(2, 1, 4),
-(3, 2, 1);
+INSERT INTO UserSkill (user_id, skill_id) VALUES 
+(1, 3),
+(1, 4),
+(2, 1);
 
-INSERT INTO EventUser(id , event_id,user_id) VALUES
-(1,1,1),
-(2,1,2),
-(3,1,3),
-(4,2,4)
+INSERT INTO EventUser(event_id,user_id) VALUES
+(1,1),
+(1,2),
+(1,3),
+(2,4)
 
-INSERT INTO MentorReview (id, sender_id, receiver_id, rating_star, content) VALUES
-(1, 1, 2, 5, 'Excellent work!'),
-(2, 2, 3, 4, 'Very helpful and insightful.'),
-(3, 3, 4, 3, 'Good mentee, but can improve.'),
-(4, 4, 5, 5, 'Amazing job. Highly recommend!'),
-(5, 5, 6, 2, 'Needs to be more punctual.'),
-(6, 1, 3, 4, 'Provided great scored.'),
-(7, 2, 4, 5, 'Exceptional mentee, very knowledgeable.'),
-(8, 3, 5, 3, 'Very good, smart guys.'),
-(9, 4, 6, 4, 'Great mentee, very supportive.'),
-(10, 5, 1, 5, 'Outstanding guidance and support.');
+INSERT INTO MentorReview (sender_id, receiver_id, rating_star, content) VALUES
+(1, 2, 5, 'Excellent work!'),
+(2, 3, 4, 'Very helpful and insightful.'),
+(3, 4, 3, 'Good mentee, but can improve.'),
+(4, 5, 5, 'Amazing job. Highly recommend!'),
+(5, 6, 2, 'Needs to be more punctual.'),
+(1, 3, 4, 'Provided great scored.'),
+(2, 4, 5, 'Exceptional mentee, very knowledgeable.'),
+(3, 5, 3, 'Very good, smart guys.'),
+(4, 6, 4, 'Great mentee, very supportive.'),
+(5, 1, 5, 'Outstanding guidance and support.');
+
+INSERT INTO Subsystem
+    (name, description, created_at)
+VALUES
+    ('Communication', 'Communication Subsystem', GETDATE()),
+    ('Course Management', 'Course Management Subsystem', GETDATE()),
+    ('Mentoring Hub', 'Mentoring Hub', GETDATE());
+
+
+INSERT INTO NotificationType
+    (name)
+VALUES
+    ( 'Email'),
+    ( 'SMS'),
+    ( 'Push Notification'),
+    ( 'In-App Message');
+
+INSERT INTO StatusMessage
+    (name)
+VALUES
+    ( 'Sent'),
+    ( 'Delivered'),
+    ( 'Read');
+
+INSERT INTO Workspace
+    (name, owner_id)
+VALUES
+    ('Workspace 1', 1),
+    ('Workspace 2', 2);
+
+INSERT INTO Workspace
+    (name, owner_id, source_id, source_type_id)
+VALUES
+    ('Workspace 3', 3, 1, 1);
+
+INSERT INTO EventType
+    (name)
+VALUES
+    ( 'User Login'),
+    ( 'User Online'),
+    ( 'User Logout'),
+    ( 'User Register'),
+    ( 'User Update'),
+    ( 'User Delete'),
+    ( 'User Block'),
+    ( 'User Unblock'),
+    ( 'User Change Password'),
+    ( 'User Forgot Password'),
+    ( 'User Reset Password'),
+    ( 'User Change Email'),
+    ( 'User Change Role'),
+    ( 'User Change Workspace'),
+    ( 'User Change Language'),
+    ( 'User Change Preference'),
+    ( 'User Change Notification Setting'),
+    ( 'User Change Navigation Bar'),
+    ( 'User Change Dark Mode'),
+    ( 'User Change Full Name'),
+    ( 'User Change DOB'),
+    ( 'User Change Email'),
+    ( 'User Change Avatar'),
+    ( 'User Change Status'),
+    ( 'User Change Phone Number'),
+    ( 'User Change Address'),
+	('View');
+
+INSERT INTO MeetingParticipantStatus
+    (name)
+VALUES
+    ( 'Invited'),
+    ( 'Accepted'),
+    ( 'Joined'),
+    ( 'Left'),
+    ( 'Declined');
+
+INSERT INTO Channel
+    (workspace_id, name, description, is_private, created_at)
+VALUES
+    (1, 'Channel 1', 'Description 1', 0, GETDATE()),
+    (1, 'Channel 2', 'Description 2', 1, GETDATE()),
+    (2, 'Channel 3', 'Description 3', 0, GETDATE()),
+    (2, 'Channel 4', 'Description 4', 1, GETDATE());
+
+INSERT INTO Emoji
+    (unicode, name)
+VALUES
+    ('U+1F600', 'Grinning Face'),
+    ('U+1F603', 'Grinning Face with Big Eyes'),
+    ('U+1F604', 'Grinning Face with Smiling Eyes'),
+    ('U+1F601', 'Beaming Face with Smiling Eyes'),
+    ('U+1F606', 'Grinning Squinting Face'),
+    ('U+1F605', 'Grinning Face with Sweat'),
+    ('U+1F923', 'Rolling on the Floor Laughing'),
+    ('U+1F602', 'Face with Tears of Joy'),
+    ('U+1F642', 'Slightly Smiling Face'),
+    ('U+1F643', 'Upside-Down Face'),
+    ('U+1F609', 'Winking Face'),
+    ('U+1F60A', 'Smiling Face with Smiling Eyes'),
+    ('U+1F607', 'Smiling Face with Halo'),
+    ('U+1F970', 'Smiling Face with Hearts'),
+    ('U+1F60D', 'Smiling Face with Heart-Eyes'),
+    ('U+1F929', 'Star-Struck'),
+    ('U+1F618', 'Face Blowing a Kiss'),
+    ('U+1F617', 'Kissing Face'),
+    ('U+263A', 'Smiling Face'),
+    ('U+1F61A', 'Kissing Face with Closed Eyes'),
+    ('U+1F619', 'Kissing Face with Smiling Eyes'),
+    ('U+1F60B', 'Face Savoring Food'),
+    ('U+1F61B', 'Face with Tongue'),
+    ('U+1F61C', 'Winking Face with Tongue'),
+    ('U+1F92A', 'Zany Face'),
+    ('U+1F61D', 'Squinting Face with Tongue'),
+    ('U+1F911', 'Money-Mouth Face'),
+    ('U+1F917', 'Hugging Face'),
+    ('U+1F92D', 'Face with Hand Over Mouth'),
+    ('U+1F92B', 'Shushing Face'),
+    ('U+1F914', 'Thinking Face'),
+    ('U+1F910', 'Zipper-Mouth Face'),
+    ('U+1F928', 'Face with Raised Eyebrow'),
+    ('U+1F610', 'Neutral Face'),
+    ('U+1F611', 'Expressionless Face'),
+    ('U+1F636', 'Face Without Mouth'),
+    ('U+1F60F', 'Smirking Face'),
+    ('U+1F612', 'Unamused Face'),
+    ('U+1F644', 'Face with Rolling Eyes'),
+    ('U+1F62C', 'Grimacing Face'),
+    ('U+1F925', 'Lying Face'),
+    ('U+1F60C', 'Relieved Face'),
+    ('U+1F614', 'Pensive Face'),
+    ('U+1F62A', 'Sleepy Face'),
+    ('U+1F924', 'Drooling Face'),
+    ('U+1F634', 'Sleeping Face'),
+    ('U+1F637', 'Face with Medical Mask'),
+    ('U+1F912', 'Face with Thermometer'),
+    ('U+1F915', 'Face with Head-Bandage'),
+    ('U+1F922', 'Nauseated Face'),
+    ('U+1F92E', 'Face Vomiting'),
+    ('U+1F927', 'Sneezing Face'),
+    ('U+1F975', 'Hot Face'),
+    ('U+1F976', 'Cold Face'),
+    ('U+1F974', 'Woozy Face'),
+    ('U+1F635', 'Dizzy Face'),
+    ('U+1F92F', 'Exploding Head'),
+    ('U+9757', 'Cowboy Hat Face'),
+    ('U+1F920', 'Partying Face'),
+    ('U+1F973', 'Disguised Face'),
+    ('U+1F60E', 'Smiling Face with Sunglasses'),
+    ('U+1F913', 'Nerd Face'),
+    ('U+1F9D0', 'Face with Monocle'),
+    ('U+1F615', 'Confused Face'),
+    ('U+1F61F', 'Worried Face'),
+    ('U+1F641', 'Slightly Frowning Face'),
+    ('U+2639', 'Frowning Face'),
+    ('U+1F62E', 'Face with Open Mouth'),
+    ('U+1F62F', 'Hushed Face'),
+    ('U+1F632', 'Astonished Face'),
+    ('U+1F633', 'Flushed Face'),
+    ('U+1F97A', 'Pleading Face'),
+    ('U+1F626', 'Frowning Face with Open Mouth');
+
+INSERT INTO FeedbackGroup
+    (name)
+VALUES
+    ( 'Bug'),
+    ( 'Feature Request'),
+    ( 'Improvement'),
+    ( 'Others');
+
+INSERT INTO FeedbackStatus
+    (name)
+VALUES
+    ( 'Open'),
+    ( 'In Progress'),
+    ( 'Closed');
+
+INSERT INTO Meeting
+    (owner_id, name, description, start_at, end_at, created_at)
+VALUES
+    (1, 'Meeting 1', 'Description 1', GETDATE(), GETDATE(), GETDATE()),
+    (1, 'Meeting 2', 'Description 2', GETDATE(), GETDATE(), GETDATE()),
+    (2, 'Meeting 3', 'Description 3', GETDATE(), GETDATE(), GETDATE()),
+    (2, 'Meeting 4', 'Description 4', GETDATE(), GETDATE(), GETDATE());
+
+INSERT INTO DirectMessage
+    (user1, user2, created_at)
+VALUES
+    (1, 2, GETDATE()),
+    (1, 3, GETDATE()),
+    (2, 3, GETDATE()),
+    (2, 4, GETDATE());
+
+INSERT INTO MeetingParticipant
+    (meeting_id, user_id, status_id)
+VALUES
+    (1, 1, 1),
+    (1, 2, 1),
+    (1, 3, 1),
+    (2, 1, 1),
+    (2, 2, 1),
+    (2, 3, 1),
+    (3, 1, 1),
+    (3, 2, 1),
+    (3, 3, 1),
+    (4, 1, 1),
+    (4, 2, 1),
+    (4, 3, 1);
+
+INSERT INTO NotificationQueue
+    (user_id, notification_type_id, content)
+VALUES
+    (1, 4, 'Content 1'),
+    (1, 4, 'Content 2'),
+    (1, 4, 'Content 3'),
+    (1, 4, 'Content 4'),
+    (1, 4, 'Content 5'),
+    (1, 4, 'Content 6');
+
+
+INSERT INTO WorkspaceMember
+    (workspace_id, user_id, join_at, updated_at)
+VALUES
+    (1, 1, GETDATE(), GETDATE()),
+    (1, 2, GETDATE(), GETDATE()),
+    (1, 3, GETDATE(), GETDATE()),
+    (1, 2, GETDATE(), GETDATE()),
+    (1, 3, GETDATE(), GETDATE()),
+    (1, 4, GETDATE(), GETDATE()),
+    (1, 5, GETDATE(), GETDATE()),
+    (1, 6, GETDATE(), GETDATE()),
+    (1, 7, GETDATE(), GETDATE()),
+    (2, 1, GETDATE(), GETDATE()),
+    (2, 2, GETDATE(), GETDATE()),
+    (2, 3, GETDATE(), GETDATE()),
+    (3, 1, GETDATE(), GETDATE()),
+    (3, 2, GETDATE(), GETDATE()),
+    (3, 3, GETDATE(), GETDATE());
+
+INSERT INTO ChannelShared
+    (channel_id, original_workspace_id, target_workspace_id)
+VALUES
+    (1, 1, 2),
+    (2, 1, 2),
+    (3, 2, 1),
+    (4, 2, 1);
+
+
+INSERT INTO PollQuestion
+    (question, channel_id, created_by, created_at, expires_at)
+VALUES
+    ('Question 1', 1, 1, GETDATE(), GETDATE()),
+    ('Question 2', 1, 2, GETDATE(), GETDATE()),
+    ('Question 3', 2, 1, GETDATE(), GETDATE()),
+    ('Question 4', 2, 2, GETDATE(), GETDATE());
+
+INSERT INTO PollAnswer
+    (question_id, answer, created_by, created_at)
+VALUES
+    (1, 'Answer 1', 1, GETDATE()),
+    (1, 'Answer 2', 1, GETDATE()),
+    (1, 'Answer 3', 1, GETDATE()),
+    (2, 'Answer 1', 2, GETDATE()),
+    (2, 'Answer 2', 2, GETDATE()),
+    (2, 'Answer 3', 2, GETDATE()),
+    (3, 'Answer 1', 1, GETDATE()),
+    (3, 'Answer 2', 1, GETDATE()),
+    (3, 'Answer 3', 1, GETDATE()),
+    (4, 'Answer 1', 2, GETDATE()),
+    (4, 'Answer 2', 2, GETDATE()),
+    (4, 'Answer 3', 2, GETDATE());
+
+INSERT INTO PollVotingHistory
+    (question_id, answer_id, voted_by, voted_at)
+VALUES
+    (1, 1, 1, GETDATE()),
+    (1, 2, 1, GETDATE()),
+    (1, 3, 1, GETDATE()),
+    (2, 1, 2, GETDATE()),
+    (2, 2, 2, GETDATE()),
+    (2, 3, 2, GETDATE()),
+    (3, 1, 1, GETDATE()),
+    (3, 2, 1, GETDATE()),
+    (3, 3, 1, GETDATE()),
+    (4, 1, 2, GETDATE()),
+    (4, 2, 2, GETDATE()),
+    (4, 3, 2, GETDATE());
+
+INSERT INTO [Log]
+    (user_id, event_type_id, log_time)
+VALUES
+    (1, 2, GETDATE()),
+    (2, 2, GETDATE()),
+    (3, 2, GETDATE()),
+    (4, 2, GETDATE()),
+    (5, 2, GETDATE()),
+	(1, 27, '2024-03-02 00:00:00'),
+	(1, 27, '2024-03-03 00:00:00'),
+	(1, 27, '2024-04-04 00:00:00'),
+	(1, 27, '2024-05-05 00:00:00'),
+	(3, 27, '2024-06-06 00:00:00'),
+	(1, 27, '2024-07-07 00:00:00'),
+	(1, 27, '2024-08-08 00:00:00'),
+	(1, 27, '2024-09-09 00:00:00'),
+	(1, 27, '2024-03-05 00:00:00'),
+	(1, 27, '2024-03-06 00:00:00'),
+	(1, 27, '2024-04-07 00:00:00'),
+	(1, 27, '2024-05-08 00:00:00'),
+	(2, 27, '2024-06-09 00:00:00'),
+	(2, 27, '2024-07-10 00:00:00'),
+	(2, 27, '2024-08-11 00:00:00'),
+	(2, 27, '2024-09-12 00:00:00'),
+	(3, 27, '2024-03-11 00:00:00'),
+	(3, 27, '2024-03-12 00:00:00'),
+	(3, 27, '2024-04-13 00:00:00');
+
+INSERT INTO EventParameter
+    (name, data_type, event_type_id)
+VALUES
+    ('workspace_id', 'int', 2),
+    ('duration', 'int', 2),
+	('source_type_id', 'int', 27),
+    ('source_id', 'int', 27);
+
+INSERT INTO LogDetail
+    (log_id, event_parameter_id, [value])
+VALUES
+    (1, 1, '1'),
+    (2, 1, '1'),
+    (3, 1, '1'),
+    (4, 1, '1'),
+    (5, 1, '1'),
+    (1, 2, '20'),
+    (2, 2, '30'),
+    (3, 2, '40'),
+    (4, 2, '50'),
+    (5, 2, '60'),
+	(6, 3, '3'),
+	(7, 3, '3'),
+	(8, 3, '3'),
+	(9, 3, '3'),
+	(10, 3, '3'),
+	(11, 3, '3'),
+	(12, 3, '3'),
+	(13, 3, '3'),
+	(14, 3, '3'),
+	(15, 3, '3'),
+	(16, 3, '3'),
+	(17, 3, '3'),
+	(18, 3, '3'),
+	(19, 3, '3'),
+	(20, 3, '3'),
+	(21, 3, '3'),
+	(22, 3, '3'),
+	(23, 3, '3'),
+	(24, 3, '3'),
+    (6, 4, '1'),
+	(7, 4, '1'),
+	(8, 4, '3'),
+	(9, 4, '2'),
+	(10, 4, '2'),
+	(11, 4, '4'),
+	(12, 4, '5'),
+	(13, 4, '3'),
+	(14, 4, '1'),
+	(15, 4, '2'),
+	(16, 4, '3'),
+	(17, 4, '4'),
+	(18, 4, '2'),
+	(19, 4, '4'),
+	(20, 4, '5'),
+	(21, 4, '3'),
+	(22, 4, '1'),
+	(23, 4, '2'),
+	(24, 4, '3');
+
+INSERT INTO [Message]
+    (sender_id, content, channel_id, send_at)
+VALUES
+    (1, 'Message 1', 1, GETDATE()),
+    (1, 'Message 2', 1, GETDATE()),
+    (1, 'Message 3', 2, GETDATE()),
+    (1, 'Message 4', 2, GETDATE());
+INSERT INTO [Message]
+    (sender_id, content, dms_id, send_at)
+VALUES
+    (1, 'Message 1', 1, GETDATE()),
+    (1, 'Message 2', 1, GETDATE()),
+    (1, 'Message 3', 2, GETDATE()),
+    (1, 'Message 4', 2, GETDATE());
+
+INSERT INTO MessageMention
+    (message_id, user_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (2, 2);
+
+INSERT INTO MessageAttachment
+    (message_id, asset_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (2, 2);
+
+INSERT INTO MessageReaction
+    (message_id, emoji_id, user_id)
+VALUES
+    (1, 1, 1),
+    (1, 2, 1),
+    (2, 1, 1),
+    (2, 2, 1);
+
+
+INSERT INTO BlockList
+    (user_id, user_id_is_blocked, dms_id)
+VALUES
+    (1, 2, 1),
+    (1, 3, 1),
+    (2, 3, 1),
+    (2, 4, 1);
+
+INSERT INTO Feedback
+    (user_id, subsystem_id, sender_email, group_id, status_id, content, send_at)
+VALUES
+    (1, 1, 'test@gmail.com', 1, 2, 'Content 1', GETDATE()),
+    (1, 2, 'test@gmail.com', 2, 1, 'Content 2', GETDATE()),
+    (1, 1, 'test@gmail.com', 3, 1, 'Content 3', GETDATE()),
+    (1, 1, 'test@gmail.com', 1, 3, 'Content 4', GETDATE());
+
+INSERT INTO FeedbackAttachment
+    (feedback_id, asset_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (2, 2);
+
+INSERT INTO FeedbackAssignee
+    (feedback_id, assignee_id, assign_at, content)
+VALUES
+    (1, 4, GETDATE(), 'Content 1');
+
+INSERT INTO FeedbackResult
+    (feedback_id, content, send_at)
+VALUES
+    (4, 'Content 1', GETDATE());
+
 ```

@@ -14,5 +14,5 @@ RETURN
         Setting
     WHERE 
         setting_type = @category and setting_name = @variable
-);
+)
 ```
