@@ -1,3 +1,4 @@
+```sql
 USE [MentorHub]
 GO
 /****** Object:  Table [dbo].[Setting]    Script Date: 18/07/2024 11:03:06 SA ******/
@@ -3616,3 +3617,4 @@ BEGIN
 END
 
 GO
+```
