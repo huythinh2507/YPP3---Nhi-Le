@@ -26,7 +26,7 @@ RETURN
             log_time
         FROM
             get_view
-        WHERE event_parameter_id = 3 AND [user_id] = 1 AND value = @source_type_id
+        WHERE event_parameter_id = 3 AND [user_id] = @user_id AND value = @source_type_id
     )
     SELECT 
 		[value] 
