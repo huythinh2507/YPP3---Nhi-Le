@@ -1,5 +1,5 @@
 ```sql
-CREATE FUNCTION dbo.GetViewSource(@user_id INT)
+CREATE FUNCTION dbo.GetViewSource(@user_id INT, @source_type_id INT)
 RETURNS TABLE
 AS
 RETURN
@@ -8,6 +8,7 @@ RETURN
     (
         SELECT
             l.[user_id],
+			log_id,
             ld.event_parameter_id,
             ld.value,
             l.log_time
@@ -21,13 +22,17 @@ RETURN
     (
         SELECT
             [value] AS source_id,
+			log_id,
             log_time
         FROM
             get_view
-        WHERE event_parameter_id = 4 AND [user_id] = @user_id
+        WHERE event_parameter_id = 3 AND [user_id] = 1 AND value = @source_type_id
     )
-    SELECT source_id, log_time
-    FROM get_source
+    SELECT 
+		[value] 
+	FROM LogDetail ld
+	JOIN get_source gs ON ld.log_id = gs.log_id 
+	WHERE event_parameter_id = 4 
 );
 GO
 
